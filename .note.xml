@@ -1,0 +1,11 @@
+<note title="Notes" removeInRFC="true">
+  <t>
+    <!-- This document is a product of the
+    <eref target="https://dt.ietf.org/wg/uta">Using TLS in Applications Working Group</eref>. -->
+    Source for this draft and an issue tracker can be found at
+    <eref target="https://github.com/richsalz/draft-use-tls13"/>.
+  </t>
+  <t>RFC Editor: Please update 'this RFC' to refer to this document,
+    once its RFC number is known, through the document.</t>
+</note>
+

@@ -10,15 +10,15 @@ date:
 consensus: true
 v: 3
 area: "Security"
-workgroup: "Transport Layer Security"
+workgroup: "Using TLS in Applications"
 keyword:
  - TLS
  - features
 venue:
-  group: "Transport Layer Security"
+  group: "Using TLS in Applications"
   type: "Working Group"
-  mail: "tls@ietf.org"
-  github: "richsalz/tls12-frozen"
+  mail: "uta@ietf.org"
+  github: "richsalz/draft-use-tls13"
 
 author:
 -
@@ -49,9 +49,9 @@ informative:
   PQUIPWG:
     target: https://datatracker.ietf.org/wg/pquip/about/
     title: Post-Quantum Use in Protocols
-  TLSWG:
-    target: https://datatracker.ietf.org/wg/tls/about/
-    title: Transport Layer Security
+  uta:
+    target: https://datatracker.ietf.org/wg/uta/about/
+    title: Using TLS in Applications
   TRIPLESHAKE:
     target: https://mitls.org/pages/attacks/3SHAKE
     title: Triple Handshakes Considered Harmful Breaking and Fixing Authentication over TLS
@@ -193,7 +193,7 @@ While the industry is waiting for NIST to finish standardization, the
 IETF has several efforts underway.
 A working group was formed in early 2013 to work on use of PQC in IETF protocols,
 {{PQUIPWG}}.
-Several other working groups, including TLS {{TLSWG}},
+Several other working groups, including TLS {{uta}},
 are working on
 drafts to support hybrid algorithms and identifiers, for use during a
 transition from classic to a post-quantum world.
