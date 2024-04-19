@@ -17,7 +17,7 @@
 /versioned/
 Gemfile.lock
 archive.json
-draft-rsalz-uta-require-tls13.xml
+draft-ietf-uta-require-tls13.xml
 package-lock.json
 report.xml
 !requirements.txt
