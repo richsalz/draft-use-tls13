@@ -148,19 +148,21 @@ TLS only.
 
 # Introduction {#sec-reasons}
 
-TLS 1.2 {{TLS12}} is in widespread use and can be configured such that it provides good
+TLS 1.2 {{TLS12}} is in widespread use and can be configured such that
+it provides good
 security properties. However, this protocol version suffers from several
 deficiencies:
 
 1. While application layer traffic is always encrypted, most of the handshake
-messages are not encrypted. Therefore, the privacy provided is suboptimal.
+messages are not. Therefore, the privacy provided is suboptimal.
 This is a protocol issue that cannot be addressed by configuration.
 
 2. The list of cryptographic primitives specified for the protocol, both in-use
-primitives and deprecated ones, includes several primitives that were a source for
+primitives and deprecated ones, includes several primitives that have
+been a source for
 vulnerabilities throughout the years, such as RSA key exchange, CBC cipher suites,
 and problematic finite-field Diffie-Hellman group negotiation.
-This deficiency may be addressed through proper configuration; however,
+These issues could be addressed through proper configuration; however,
 experience shows that configuration mistakes are common, especially when
 deploying cryptography.
 See {{sec-considerations}} for elaboration.
@@ -170,11 +172,12 @@ types of attacks (see {{sec-considerations}});
 extensions are required to provide
 security.
 
-In contrast, TLS 1.3 {{TLS13}} is also in
+TLS 1.3 {{TLS13}} is also in
 widespread use and fixes most known deficiencies with TLS 1.2, such as
 encrypting more of the traffic so that it is not readable by outsiders and
 removing most cryptographic primitives considered dangerous. Importantly, TLS
-1.3 enjoys robust security proofs and provides excellent security as-is.
+1.3 enjoys robust security proofs and provides excellent security without
+any additional configuration.
 
 This document specifies that, since TLS 1.3 use is widespread, new protocols
 must require and assume its existence.
@@ -188,7 +191,7 @@ TLS only.
 # Implications for post-quantum cryptography
 
 Cryptographically-relevant
-quantum computers (CRQC), once available, will have a huge impact on TLS.
+quantum computers, once available, will have a huge impact on TLS.
 In 2016, the US National Institute of Standards and Technology (NIST) started a
 multi-year effort to standardize algorithms that will be "safe"
 once quantum computers are feasible {{PQC}}. First IETF discussions happened
@@ -237,7 +240,7 @@ in the above paragraphs.
 # Security Considerations {#sec-considerations}
 
 TLS 1.2 was specified with several cryptographic primitives and design choices
-that have, over time, its security. The purpose of this section is to
+that have, over time, weakened its security. The purpose of this section is to
 briefly survey several such prominent problems that have affected the protocol.
 It should be noted, however, that TLS 1.2 can be configured securely; it is
 merely much more difficult to configure it securely as opposed to using its
@@ -245,8 +248,8 @@ modern successor, TLS 1.3. See {{!RFC9325}} for a more thorough guide on the
 secure deployment of TLS 1.2.
 
 Firstly, the TLS 1.2 protocol, without any extension points, is vulnerable to
-renegotiation attacks (see {{RENEG1}} and {{RENEG2}}  and the
-Triple Handshake attack (see {{TRIPLESHAKE}}.
+renegotiation attacks (see {{RENEG1}} and {{RENEG2}})  and the
+Triple Handshake attack (see {{TRIPLESHAKE}}).
 Broadly, these attacks
 exploit the protocol's support for renegotiation in order to inject a prefix
 chosen by the attacker into the plaintext stream. This is usually a devastating
@@ -283,8 +286,3 @@ BEAST {{BEAST}}, Logjam {{WEAKDH}}, FREAK {{FREAK}}, and SLOTH {{SLOTH}}.
 This document makes no requests to IANA.
 
 --- back
-
-# Acknowledgments
-{:numbered="false"}
-
-None yet.
