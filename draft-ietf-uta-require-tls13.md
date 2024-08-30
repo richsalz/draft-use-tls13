@@ -1,7 +1,7 @@
 ---
 title: "New Protocols Must Require TLS 1.3"
 abbrev: "require-tls1.3"
-category: std
+category: bcp
 updates: 9325
 
 docname: draft-ietf-uta-require-tls13-latest
@@ -33,10 +33,10 @@ author:
 normative:
   TLS12: RFC5246
   TLS13: RFC8446
-  QUICTLS: RFC9001
-  DNSTLS: RFC8310
 
 informative:
+  QUICTLS: RFC9001
+  DNSTLS: RFC8310
   PQC:
     target: https://csrc.nist.gov/projects/post-quantum-cryptography
     date: "January, 2017"
@@ -144,6 +144,8 @@ assume its existence.
 This prescription does not pertain to DTLS (in any DTLS version); it pertains to
 TLS only.
 
+This document updates {{RFC9325}}.
+
 --- middle
 
 # Introduction {#sec-reasons}
@@ -236,6 +238,19 @@ When the API allows it, clients SHOULD specify just the minimum version they
 want.
 This SHOULD be TLS 1.3 or TLS 1.2, depending on the circumstances described
 in the above paragraphs.
+
+# Changes to RFC 9325
+
+This document makes two changes to the recommendations in
+{{RFC9325, Section 3.1.1}}:
+
+- That section says that TLS 1.3 SHOULD be supported; this document says
+that for new protocols it MUST be supported.
+
+- That section says that TLS 1.2 MUST be supported; this document says that
+it MAY be supported as described above.
+
+Again, these changes only apply to TLS, and not DTLS.
 
 # Security Considerations {#sec-considerations}
 
