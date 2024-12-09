@@ -35,6 +35,18 @@ normative:
   TLS13: RFC8446
 
 informative:
+  ML-KEM:
+    target: https://csrc.nist.gov/pubs/fips/203/final
+    title: "Module-Lattice-Based Key-Encapsulation Mechanism Standard"
+    date: "August 13, 2024"
+  ML-DSA:
+    target: https://csrc.nist.gov/pubs/fips/204/final
+    title: "Module-Lattice-Based Key Digital Signature Standard"
+    date: "August 13, 2024"
+  SLH-DSA:
+    target: https://csrc.nist.gov/pubs/fips/205/final
+    title: "Stateless Hash-Based Key-Digital Signature Standard"
+    date: "August 13, 2024"
   QUICTLS: RFC9001
   DNSTLS: RFC8310
   PQC:
@@ -133,14 +145,13 @@ informative:
 
 --- abstract
 
-TLS 1.2 is in widespread use and can be configured such that it provides good
-security properties. TLS 1.3 is also in
-widespread use and fixes some known deficiencies with TLS 1.2, such as
-removing error-prone cryptographic primitives and encrypting more of the traffic
-so that it is not readable by outsiders.
-
-Since TLS 1.3 use is widespread, new protocols must require and
-assume its existence.
+TLS 1.2 is in use and can be configured such that it provides good security
+properties. TLS 1.3 use is increasing, and fixes some known deficiencies
+with TLS
+1.2, such as removing error-prone cryptographic primitives and encrypting
+more of the traffic so that it is not readable by outsiders.
+For these reasons, new protocols must require and
+assume the existence of TLS 1.3  existence.
 This prescription does not pertain to DTLS (in any DTLS version); it pertains to
 TLS only.
 
@@ -150,7 +161,7 @@ This document updates {{RFC9325}}.
 
 # Introduction {#sec-reasons}
 
-TLS 1.2 {{TLS12}} is in widespread use and can be configured such that
+TLS 1.2 {{TLS12}} is in use and can be configured such that
 it provides good
 security properties. However, this protocol version suffers from several
 deficiencies:
@@ -193,15 +204,16 @@ TLS only.
 # Implications for post-quantum cryptography
 
 Cryptographically-relevant
-quantum computers, once available, will have a huge impact on TLS.
+quantum computers, once available, will have a huge impact on TLS traffic.
 In 2016, the US National Institute of Standards and Technology (NIST) started a
 multi-year effort to standardize algorithms that will be "safe"
-once quantum computers are feasible {{PQC}}. First IETF discussions happened
+once quantum computers are feasible {{PQC}}. The first IETF discussions happened
 around the same time {{CFRGSLIDES}}.
 
-While the industry is waiting for NIST to finish standardization, the
-IETF has several efforts underway.
-A working group was formed in early 2023 to work on use operational and
+In 2024 NIST released standards for {{ML-KEM}}, {{ML-DSA}}, and {{SLH-DSA}}.
+While industry was waiting for NIST to finish standardization, the
+IETF has had several efforts underway.
+A working group was formed in early 2023 to work on operational and
 transitional uses of PQC in IETF protocols,
 {{PQUIPWG}}.
 Several other working groups, notably LAMPS {{LAMPSWG}} and TLS {{TLSWG}},
@@ -236,7 +248,7 @@ many TLS libraries provide a way for applications to specify the range
 of versions.
 When the API allows it, clients SHOULD specify just the minimum version they
 want.
-This SHOULD be TLS 1.3 or TLS 1.2, depending on the circumstances described
+This MUST be TLS 1.3 or TLS 1.2, depending on the circumstances described
 in the above paragraphs.
 
 # Changes to RFC 9325
