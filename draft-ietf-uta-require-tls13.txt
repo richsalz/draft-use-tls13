@@ -5,8 +5,8 @@
 Using TLS in Applications                                        R. Salz
 Internet-Draft                                       Akamai Technologies
 Updates: 9325 (if approved)                                    N. Aviram
-Intended status: Best Current Practice                    30 August 2024
-Expires: 3 March 2025
+Intended status: Best Current Practice                   9 December 2024
+Expires: 12 June 2025
 
 
                    New Protocols Must Require TLS 1.3
@@ -14,15 +14,14 @@ Expires: 3 March 2025
 
 Abstract
 
-   TLS 1.2 is in widespread use and can be configured such that it
-   provides good security properties.  TLS 1.3 is also in widespread use
-   and fixes some known deficiencies with TLS 1.2, such as removing
-   error-prone cryptographic primitives and encrypting more of the
-   traffic so that it is not readable by outsiders.
-
-   Since TLS 1.3 use is widespread, new protocols must require and
-   assume its existence.  This prescription does not pertain to DTLS (in
-   any DTLS version); it pertains to TLS only.
+   TLS 1.2 is in use and can be configured such that it provides good
+   security properties.  TLS 1.3 use is increasing, and fixes some known
+   deficiencies with TLS 1.2, such as removing error-prone cryptographic
+   primitives and encrypting more of the traffic so that it is not
+   readable by outsiders.  For these reasons, new protocols must require
+   and assume the existence of TLS 1.3 existence.  This prescription
+   does not pertain to DTLS (in any DTLS version); it pertains to TLS
+   only.
 
    This document updates [RFC9325].
 
@@ -56,7 +55,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 March 2025.
+   This Internet-Draft will expire on 12 June 2025.
 
 Copyright Notice
 
@@ -88,9 +87,9 @@ Table of Contents
 
 1.  Introduction
 
-   TLS 1.2 [TLS12] is in widespread use and can be configured such that
-   it provides good security properties.  However, this protocol version
-   suffers from several deficiencies:
+   TLS 1.2 [TLS12] is in use and can be configured such that it provides
+   good security properties.  However, this protocol version suffers
+   from several deficiencies:
 
    1.  While application layer traffic is always encrypted, most of the
        handshake messages are not.  Therefore, the privacy provided is
@@ -134,19 +133,20 @@ Table of Contents
 3.  Implications for post-quantum cryptography
 
    Cryptographically-relevant quantum computers, once available, will
-   have a huge impact on TLS.  In 2016, the US National Institute of
-   Standards and Technology (NIST) started a multi-year effort to
-   standardize algorithms that will be "safe" once quantum computers are
-   feasible [PQC].  First IETF discussions happened around the same time
-   [CFRGSLIDES].
+   have a huge impact on TLS traffic.  In 2016, the US National
+   Institute of Standards and Technology (NIST) started a multi-year
+   effort to standardize algorithms that will be "safe" once quantum
+   computers are feasible [PQC].  The first IETF discussions happened
+   around the same time [CFRGSLIDES].
 
-   While the industry is waiting for NIST to finish standardization, the
-   IETF has several efforts underway.  A working group was formed in
-   early 2023 to work on use operational and transitional uses of PQC in
-   IETF protocols, [PQUIPWG].  Several other working groups, notably
-   LAMPS [LAMPSWG] and TLS [TLSWG], are working on drafts to support
-   hybrid algorithms and identifiers, for use during a transition from
-   classic to a post-quantum world.
+   In 2024 NIST released standards for [ML-KEM], [ML-DSA], and
+   [SLH-DSA].  While industry was waiting for NIST to finish
+   standardization, the IETF has had several efforts underway.  A
+   working group was formed in early 2023 to work on operational and
+   transitional uses of PQC in IETF protocols, [PQUIPWG].  Several other
+   working groups, notably LAMPS [LAMPSWG] and TLS [TLSWG], are working
+   on drafts to support hybrid algorithms and identifiers, for use
+   during a transition from classic to a post-quantum world.
 
    For TLS it is important to note that the focus of these efforts is
    TLS 1.3 or later: TLS 1.2 WILL NOT be supported (see Section 7).
@@ -171,8 +171,8 @@ Table of Contents
    version negotiation," and many TLS libraries provide a way for
    applications to specify the range of versions.  When the API allows
    it, clients SHOULD specify just the minimum version they want.  This
-   SHOULD be TLS 1.3 or TLS 1.2, depending on the circumstances
-   described in the above paragraphs.
+   MUST be TLS 1.3 or TLS 1.2, depending on the circumstances described
+   in the above paragraphs.
 
 5.  Changes to RFC 9325
 
@@ -244,9 +244,9 @@ Table of Contents
    [I-D.draft-ietf-tls-deprecate-obsolete-kex]
               Bartle, C. and N. Aviram, "Deprecating Obsolete Key
               Exchange Methods in TLS 1.2", Work in Progress, Internet-
-              Draft, draft-ietf-tls-deprecate-obsolete-kex-04, 26 June
-              2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
-              tls-deprecate-obsolete-kex-04>.
+              Draft, draft-ietf-tls-deprecate-obsolete-kex-05, 3
+              September 2024, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-tls-deprecate-obsolete-kex-05>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -323,6 +323,13 @@ Table of Contents
               libraries", n.d., <https://nds.rub.de/media/nds/
               veroeffentlichungen/2016/10/19/tls-attacker-ccs16.pdf>.
 
+   [ML-DSA]   "Module-Lattice-Based Key Digital Signature Standard",
+              August 2024, <https://csrc.nist.gov/pubs/fips/204/final>.
+
+   [ML-KEM]   "Module-Lattice-Based Key-Encapsulation Mechanism
+              Standard", August 2024,
+              <https://csrc.nist.gov/pubs/fips/203/final>.
+
    [PQC]      "Post=Quantum Cryptography", January 2017,
               <https://csrc.nist.gov/projects/post-quantum-
               cryptography>.
@@ -343,6 +350,9 @@ Table of Contents
    [RENEG2]   Ray, M., "Authentication Gap in TLS Renegotiation", n.d.,
               <https://web.archive.org/web/20091228061844/
               http://extendedsubset.com/?p=8>.
+
+   [SLH-DSA]  "Stateless Hash-Based Key-Digital Signature Standard",
+              August 2024, <https://csrc.nist.gov/pubs/fips/205/final>.
 
    [SLOTH]    Bhargavan, K. and G. Leurent, "Transcript collision
               attacks: Breaking authentication in TLS, IKE, and SSH",
