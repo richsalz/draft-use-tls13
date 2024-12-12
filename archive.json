@@ -1,0 +1,113 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2024-12-12T01:44:58.274364+00:00",
+  "repo": "richsalz/draft-use-tls13",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [],
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOLo4CmM5tYIZ7",
+      "title": "Using utf8 broke vim with utf8 already present.",
+      "url": "https://github.com/richsalz/draft-use-tls13/pull/1",
+      "state": "MERGED",
+      "author": "richsalz",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "at least, I think that is what happens.\r\nshrug.\r\n",
+      "createdAt": "2024-04-22T16:53:59Z",
+      "updatedAt": "2024-04-22T16:54:19Z",
+      "baseRepository": "richsalz/draft-use-tls13",
+      "baseRefName": "main",
+      "baseRefOid": "c6c06238126fee5468960adff1cabc08ea475c83",
+      "headRepository": "richsalz/draft-use-tls13",
+      "headRefName": "no-utf8",
+      "headRefOid": "f3db99debe85a1299a28a8fb301ac3d58b2d23a8",
+      "closedAt": "2024-04-22T16:54:12Z",
+      "mergedAt": "2024-04-22T16:54:12Z",
+      "mergedBy": "richsalz",
+      "mergeCommit": {
+        "oid": "a19de26923ccc9e05b8ce6eb1e7e6b2d31435da8"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 2,
+      "id": "PR_kwDOLo4CmM5tYKzC",
+      "title": "A bunch of backlogged changes",
+      "url": "https://github.com/richsalz/draft-use-tls13/pull/2",
+      "state": "MERGED",
+      "author": "richsalz",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "richsalz"
+      ],
+      "labels": [],
+      "body": "Remove the \"or later\" part of \"TLS 1.3 or later\"\r\n\r\nMove to standards-track so it can update BCP 195 and RFC 9325\r\n\r\nMention LAMPS and TLS, not UTA as WG's doing work on PQC\r\n\r\nVarious wording fixes.\r\n\r\nAdd paragraph on what applications should do: if the library they are using supports it, specify the *minimum* TLS version as appropriate.",
+      "createdAt": "2024-04-22T16:59:07Z",
+      "updatedAt": "2024-07-24T23:58:55Z",
+      "baseRepository": "richsalz/draft-use-tls13",
+      "baseRefName": "main",
+      "baseRefOid": "a19de26923ccc9e05b8ce6eb1e7e6b2d31435da8",
+      "headRepository": "richsalz/draft-use-tls13",
+      "headRefName": "post-adoption",
+      "headRefOid": "9a7fb671eb94f7e206a80ba13d3c5a7d2d82bcb6",
+      "closedAt": "2024-07-24T23:58:50Z",
+      "mergedAt": "2024-07-24T23:58:50Z",
+      "mergedBy": "richsalz",
+      "mergeCommit": {
+        "oid": "347f3c8f60880945c797bb669f929b1b0b4217fc"
+      },
+      "comments": [],
+      "reviews": []
+    }
+  ]
+}
