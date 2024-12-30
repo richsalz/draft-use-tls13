@@ -14,10 +14,10 @@ with TLS
 1.2, such as removing error-prone cryptographic primitives and encrypting
 more of the traffic so that it is not readable by outsiders.
 For these reasons, new protocols must require and
-assume the existence of TLS 1.3  existence.
+assume the existence of TLS 1.3.
 This prescription does not pertain to DTLS (in any DTLS version); it pertains to
 TLS only. 
-       This document updates  . 
+       This document updates RFC9325. 
     " name="description">
 <meta content="xml2rfc 3.25.0" name="generator">
 <meta content="TLS" name="keyword">
@@ -25,15 +25,15 @@ TLS only.
 <meta content="draft-ietf-uta-require-tls13-latest" name="ietf.draft">
 <!-- Generator version information:
   xml2rfc 3.25.0
-    Python 3.12.7
+    Python 3.12.8
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
     Jinja2 3.1.4
     lxml 5.3.0
     platformdirs 4.3.6
-    pycountry 22.3.5
-    PyYAML 6.0.1
+    pycountry 24.6.1
+    PyYAML 6.0.2
     requests 2.32.3
     setuptools 70.3.0
     wcwidth 0.2.13
@@ -1059,7 +1059,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Salz &amp; Aviram</td>
-<td class="center">Expires 13 June 2025</td>
+<td class="center">Expires 3 July 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1075,12 +1075,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="https://www.rfc-editor.org/rfc/rfc9325" class="eref">9325</a> (if approved)</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-12-10" class="published">10 December 2024</time>
+<time datetime="2024-12-30" class="published">30 December 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Best Current Practice</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-06-13">13 June 2025</time></dd>
+<dd class="expires"><time datetime="2025-07-03">3 July 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1102,10 +1102,10 @@ with TLS
 1.2, such as removing error-prone cryptographic primitives and encrypting
 more of the traffic so that it is not readable by outsiders.
 For these reasons, new protocols must require and
-assume the existence of TLS 1.3  existence.
+assume the existence of TLS 1.3.
 This prescription does not pertain to DTLS (in any DTLS version); it pertains to
 TLS only.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
-<p id="section-abstract-2">This document updates <span>[<a href="#RFC9325" class="cite xref">RFC9325</a>]</span>.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
+<p id="section-abstract-2">This document updates RFC9325.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">
@@ -1141,7 +1141,7 @@ TLS only.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 13 June 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 3 July 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1250,6 +1250,7 @@ removing most cryptographic primitives considered dangerous. Importantly, TLS
 any additional configuration.<a href="#section-1-3" class="pilcrow">¶</a></p>
 <p id="section-1-4">This document specifies that, since TLS 1.3 use is widespread, new protocols
 must require and assume its existence.
+It updates <span>[<a href="#RFC9325" class="cite xref">RFC9325</a>]</span> as described in <a href="#rfc9325-updates" class="auto internal xref">Section 5</a>.
 This prescription does not pertain to DTLS (in any DTLS version); it pertains to
 TLS only.<a href="#section-1-4" class="pilcrow">¶</a></p>
 </section>
@@ -1282,13 +1283,12 @@ IETF has had several efforts underway.
 A working group was formed in early 2023 to work on operational and
 transitional uses of PQC in IETF protocols,
 <span>[<a href="#PQUIPWG" class="cite xref">PQUIPWG</a>]</span>.
-Several other working groups, notably LAMPS <span>[<a href="#LAMPSWG" class="cite xref">LAMPSWG</a>]</span> and TLS <span>[<a href="#TLSWG" class="cite xref">TLSWG</a>]</span>,
-are working on
+Several other working groups, including LAMPS <span>[<a href="#LAMPSWG" class="cite xref">LAMPSWG</a>]</span>, TLS <span>[<a href="#TLSWG" class="cite xref">TLSWG</a>]</span>,
+and IPSECME <span>[<a href="#IPSECMEWG" class="cite xref">IPSECMEWG</a>]</span>, are working on
 drafts to support hybrid algorithms and identifiers, for use during a
 transition from classic to a post-quantum world.<a href="#section-3-2" class="pilcrow">¶</a></p>
 <p id="section-3-3">For TLS it is important to note that the focus of these efforts is TLS 1.3
-or later:
-TLS 1.2 WILL NOT be supported (see <a href="#iana" class="auto internal xref">Section 7</a>).
+or later, and that TLS 1.2 will not be supported (see <span>[<a href="#TLS12FROZEN" class="cite xref">TLS12FROZEN</a>]</span>).
 This is one more reason for new protocols to default to TLS 1.3, where
 post-quantum cryptography is expected to be supported.<a href="#section-3-3" class="pilcrow">¶</a></p>
 </section>
@@ -1319,13 +1319,17 @@ This <span class="bcp14">MUST</span> be TLS 1.3 or TLS 1.2, depending on the cir
 in the above paragraphs.<a href="#section-4-3" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="changes-to-rfc-9325">
+<div id="rfc9325-updates">
 <section id="section-5">
       <h2 id="name-changes-to-rfc-9325">
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-changes-to-rfc-9325" class="section-name selfRef">Changes to RFC 9325</a>
       </h2>
-<p id="section-5-1">This document makes two changes to the recommendations in
-<span>[<a href="#RFC9325" class="cite xref">RFC9325</a>], <a href="https://rfc-editor.org/rfc/rfc9325#section-3.1.1" class="relref">Section 3.1.1</a></span>:<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-5-1">RFC 9325 provides recommendations for ensuring the security of deployed
+services that use TLS and, unlike this document, DTLS as well.
+At this time it was published, it described availability of TLS 1.3
+as "widely available." The transition and adoption mentioned in that
+documnent has grown, and this document now makes two small changes
+to the recommendations in <span>[<a href="#RFC9325" class="cite xref">RFC9325</a>], <a href="https://rfc-editor.org/rfc/rfc9325#section-3.1.1" class="relref">Section 3.1.1</a></span>:<a href="#section-5-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-5-2.1">
           <p id="section-5-2.1.1">That section says that TLS 1.3 <span class="bcp14">SHOULD</span> be supported; this document says
@@ -1402,21 +1406,9 @@ BEAST <span>[<a href="#BEAST" class="cite xref">BEAST</a>]</span>, Logjam <span>
 <a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
-<dt id="I-D.draft-ietf-tls-deprecate-obsolete-kex">[I-D.draft-ietf-tls-deprecate-obsolete-kex]</dt>
-        <dd>
-<span class="refAuthor">Bartle, C.</span> and <span class="refAuthor">N. Aviram</span>, <span class="refTitle">"Deprecating Obsolete Key Exchange Methods in TLS 1.2"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-deprecate-obsolete-kex-05</span>, <time datetime="2024-09-03" class="refDate">3 September 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-deprecate-obsolete-kex-05">https://datatracker.ietf.org/doc/html/draft-ietf-tls-deprecate-obsolete-kex-05</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC5746">[RFC5746]</dt>
-        <dd>
-<span class="refAuthor">Rescorla, E.</span>, <span class="refAuthor">Ray, M.</span>, <span class="refAuthor">Dispensa, S.</span>, and <span class="refAuthor">N. Oskov</span>, <span class="refTitle">"Transport Layer Security (TLS) Renegotiation Indication Extension"</span>, <span class="seriesInfo">RFC 5746</span>, <span class="seriesInfo">DOI 10.17487/RFC5746</span>, <time datetime="2010-02" class="refDate">February 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5746">https://www.rfc-editor.org/rfc/rfc5746</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC7465">[RFC7465]</dt>
-        <dd>
-<span class="refAuthor">Popov, A.</span>, <span class="refTitle">"Prohibiting RC4 Cipher Suites"</span>, <span class="seriesInfo">RFC 7465</span>, <span class="seriesInfo">DOI 10.17487/RFC7465</span>, <time datetime="2015-02" class="refDate">February 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7465">https://www.rfc-editor.org/rfc/rfc7465</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8174">[RFC8174]</dt>
         <dd>
@@ -1430,9 +1422,13 @@ BEAST <span>[<a href="#BEAST" class="cite xref">BEAST</a>]</span>, Logjam <span>
         <dd>
 <span class="refAuthor">Dierks, T.</span> and <span class="refAuthor">E. Rescorla</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.2"</span>, <span class="seriesInfo">RFC 5246</span>, <span class="seriesInfo">DOI 10.17487/RFC5246</span>, <time datetime="2008-08" class="refDate">August 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5246">https://www.rfc-editor.org/rfc/rfc5246</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="TLS12FROZEN">[TLS12FROZEN]</dt>
+        <dd>
+<span class="refAuthor">Salz, R.</span> and <span class="refAuthor">N. Aviram</span>, <span class="refTitle">"TLS 1.2 is in Feature Freeze"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-tls12-frozen-05</span>, <time datetime="2024-12-20" class="refDate">20 December 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-tls12-frozen-05">https://datatracker.ietf.org/doc/html/draft-ietf-tls-tls12-frozen-05</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="TLS13">[TLS13]</dt>
       <dd>
-<span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08" class="refDate">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8446">https://www.rfc-editor.org/rfc/rfc8446</a>&gt;</span>. </dd>
+<span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-rfc8446bis-11</span>, <time datetime="2024-09-14" class="refDate">14 September 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-rfc8446bis-11">https://datatracker.ietf.org/doc/html/draft-ietf-tls-rfc8446bis-11</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -1462,6 +1458,14 @@ BEAST <span>[<a href="#BEAST" class="cite xref">BEAST</a>]</span>, Logjam <span>
 <dt id="FREAK">[FREAK]</dt>
         <dd>
 <span class="refAuthor">Beurdouche, B.</span>, <span class="refAuthor">Bhargavan, K.</span>, <span class="refAuthor">Delignat-Lavaud, A.</span>, <span class="refAuthor">Fournet, C.</span>, <span class="refAuthor">Kohlweiss, M.</span>, <span class="refAuthor">Pironti, A.</span>, <span class="refAuthor">Strub, P.-Y.</span>, and <span class="refAuthor">J. K. Zinzindohoue</span>, <span class="refTitle">"A messy state of the union: Taming the composite state machines of TLS"</span>, <span>n.d.</span>, <span>&lt;<a href="https://inria.hal.science/hal-01114250/file/messy-state-of-the-union-oakland15.pdf">https://inria.hal.science/hal-01114250/file/messy-state-of-the-union-oakland15.pdf</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.draft-ietf-tls-deprecate-obsolete-kex">[I-D.draft-ietf-tls-deprecate-obsolete-kex]</dt>
+        <dd>
+<span class="refAuthor">Bartle, C.</span> and <span class="refAuthor">N. Aviram</span>, <span class="refTitle">"Deprecating Obsolete Key Exchange Methods in TLS 1.2"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-deprecate-obsolete-kex-05</span>, <time datetime="2024-09-03" class="refDate">3 September 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-deprecate-obsolete-kex-05">https://datatracker.ietf.org/doc/html/draft-ietf-tls-deprecate-obsolete-kex-05</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="IPSECMEWG">[IPSECMEWG]</dt>
+        <dd>
+<span class="refTitle">"IP Security Maintenance and Extensions"</span>, <span>n.d.</span>, <span>&lt;<a href="https://datatracker.ietf.org/wg/ipsecme/about/">https://datatracker.ietf.org/wg/ipsecme/about/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="LAMPSWG">[LAMPSWG]</dt>
         <dd>
@@ -1502,6 +1506,14 @@ BEAST <span>[<a href="#BEAST" class="cite xref">BEAST</a>]</span>, Logjam <span>
 <dt id="RENEG2">[RENEG2]</dt>
         <dd>
 <span class="refAuthor">Ray, M.</span>, <span class="refTitle">"Authentication Gap in TLS Renegotiation"</span>, <span>n.d.</span>, <span>&lt;<a href="https://web.archive.org/web/20091228061844/http://extendedsubset.com/?p=8">https://web.archive.org/web/20091228061844/http://extendedsubset.com/?p=8</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC5746">[RFC5746]</dt>
+        <dd>
+<span class="refAuthor">Rescorla, E.</span>, <span class="refAuthor">Ray, M.</span>, <span class="refAuthor">Dispensa, S.</span>, and <span class="refAuthor">N. Oskov</span>, <span class="refTitle">"Transport Layer Security (TLS) Renegotiation Indication Extension"</span>, <span class="seriesInfo">RFC 5746</span>, <span class="seriesInfo">DOI 10.17487/RFC5746</span>, <time datetime="2010-02" class="refDate">February 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5746">https://www.rfc-editor.org/rfc/rfc5746</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7465">[RFC7465]</dt>
+        <dd>
+<span class="refAuthor">Popov, A.</span>, <span class="refTitle">"Prohibiting RC4 Cipher Suites"</span>, <span class="seriesInfo">RFC 7465</span>, <span class="seriesInfo">DOI 10.17487/RFC7465</span>, <time datetime="2015-02" class="refDate">February 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7465">https://www.rfc-editor.org/rfc/rfc7465</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="SLH-DSA">[SLH-DSA]</dt>
         <dd>
