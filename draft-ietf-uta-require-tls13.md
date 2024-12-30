@@ -32,7 +32,8 @@ author:
 
 normative:
   TLS12: RFC5246
-  TLS13: RFC8446
+  TLS13: I-D.draft-ietf-tls-rfc8446bis
+  TLS12FROZEN: I-D.draft-ietf-tls-tls12-frozen
 
 informative:
   ML-KEM:
@@ -62,6 +63,9 @@ informative:
   PQUIPWG:
     target: https://datatracker.ietf.org/wg/pquip/about/
     title: Post-Quantum Use in Protocols
+  IPSECMEWG:
+    target: https://datatracker.ietf.org/wg/ipsecme/about/
+    title: IP Security Maintenance and Extensions
   LAMPSWG:
     target: https://datatracker.ietf.org/wg/lamps/about/
     title: Limited Additional Mechanisms for PXIK and SMIME
@@ -151,11 +155,11 @@ with TLS
 1.2, such as removing error-prone cryptographic primitives and encrypting
 more of the traffic so that it is not readable by outsiders.
 For these reasons, new protocols must require and
-assume the existence of TLS 1.3  existence.
+assume the existence of TLS 1.3.
 This prescription does not pertain to DTLS (in any DTLS version); it pertains to
 TLS only.
 
-This document updates {{RFC9325}}.
+This document updates RFC9325.
 
 --- middle
 
@@ -194,6 +198,7 @@ any additional configuration.
 
 This document specifies that, since TLS 1.3 use is widespread, new protocols
 must require and assume its existence.
+It updates {{RFC9325}} as described in {{rfc9325-updates}}.
 This prescription does not pertain to DTLS (in any DTLS version); it pertains to
 TLS only.
 
@@ -216,14 +221,13 @@ IETF has had several efforts underway.
 A working group was formed in early 2023 to work on operational and
 transitional uses of PQC in IETF protocols,
 {{PQUIPWG}}.
-Several other working groups, notably LAMPS {{LAMPSWG}} and TLS {{TLSWG}},
-are working on
+Several other working groups, including LAMPS {{LAMPSWG}}, TLS {{TLSWG}},
+and IPSECME {{IPSECMEWG}}, are working on
 drafts to support hybrid algorithms and identifiers, for use during a
 transition from classic to a post-quantum world.
 
 For TLS it is important to note that the focus of these efforts is TLS 1.3
-or later:
-TLS 1.2 WILL NOT be supported (see {{iana}}).
+or later, and that TLS 1.2 will not be supported (see {{TLS12FROZEN}}).
 This is one more reason for new protocols to default to TLS 1.3, where
 post-quantum cryptography is expected to be supported.
 
@@ -251,10 +255,14 @@ want.
 This MUST be TLS 1.3 or TLS 1.2, depending on the circumstances described
 in the above paragraphs.
 
-# Changes to RFC 9325
+# Changes to RFC 9325 {#rfc9325-updates}
 
-This document makes two changes to the recommendations in
-{{RFC9325, Section 3.1.1}}:
+RFC 9325 provides recommendations for ensuring the security of deployed
+services that use TLS and, unlike this document, DTLS as well.
+At this time it was published, it described availability of TLS 1.3
+as "widely available." The transition and adoption mentioned in that
+documnent has grown, and this document now makes two small changes
+to the recommendations in {{RFC9325, Section 3.1.1}}:
 
 - That section says that TLS 1.3 SHOULD be supported; this document says
 that for new protocols it MUST be supported.
@@ -282,7 +290,7 @@ exploit the protocol's support for renegotiation in order to inject a prefix
 chosen by the attacker into the plaintext stream. This is usually a devastating
 threat in practice, that allows e.g. obtaining secret cookies in a web setting.
 In light of
-the above problems, {{!RFC5746}} specifies an extension that prevents this
+the above problems, {{?RFC5746}} specifies an extension that prevents this
 category of attacks. To securely deploy TLS 1.2, either renegotiation must be
 disabled entirely, or this extension must be used. Additionally, clients must
 not allow servers to renegotiate the certificate during a connection.
@@ -291,11 +299,11 @@ Secondly, the original key exchange methods specified for the protocol, namely
 RSA key exchange and finite field Diffie-Hellman, suffer from several
 weaknesses. Similarly, to securely deploy the protocol, these key exchange
 methods must be disabled.
-See {{!I-D.draft-ietf-tls-deprecate-obsolete-kex}} for details.
+See {{?I-D.draft-ietf-tls-deprecate-obsolete-kex}} for details.
 
 Thirdly, symmetric ciphers which were widely-used in the protocol, namely RC4
 and CBC cipher suites, suffer from several weaknesses. RC4 suffers from
-exploitable biases in its key stream; see {{!RFC7465}}. CBC cipher suites have
+exploitable biases in its key stream; see {{?RFC7465}}. CBC cipher suites have
 been a source of vulnerabilities throughout the years. A straightforward
 implementation of these cipher suites inherently suffers from the Lucky13 timing
 attack {{LUCKY13}}. The first attempt to implement the cipher suites in
