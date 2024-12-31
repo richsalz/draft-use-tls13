@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-12-29T01:43:45.786324+00:00",
+  "timestamp": "2024-12-31T01:35:56.651309+00:00",
   "repo": "richsalz/draft-use-tls13",
   "labels": [
     {
@@ -105,6 +105,34 @@
       "mergedBy": "richsalz",
       "mergeCommit": {
         "oid": "347f3c8f60880945c797bb669f929b1b0b4217fc"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 3,
+      "id": "PR_kwDOLo4CmM6GZBJ3",
+      "title": "Address Valery's shepherd comments",
+      "url": "https://github.com/richsalz/draft-use-tls13/pull/3",
+      "state": "MERGED",
+      "author": "richsalz",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-12-29T20:08:44Z",
+      "updatedAt": "2024-12-30T14:34:40Z",
+      "baseRepository": "richsalz/draft-use-tls13",
+      "baseRefName": "main",
+      "baseRefOid": "3061a5733656b40bd43a485769911e9b5085b1e4",
+      "headRepository": "richsalz/draft-use-tls13",
+      "headRefName": "valery",
+      "headRefOid": "df3a78dd6cbab051f48e4a4f7dd73cdde29a3a3a",
+      "closedAt": "2024-12-30T14:34:34Z",
+      "mergedAt": "2024-12-30T14:34:34Z",
+      "mergedBy": "richsalz",
+      "mergeCommit": {
+        "oid": "4dde27a2a579f4d22ffeb020a5d31ab9d9aa00fc"
       },
       "comments": [],
       "reviews": []
