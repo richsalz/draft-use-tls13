@@ -5,8 +5,8 @@
 Using TLS in Applications                                        R. Salz
 Internet-Draft                                       Akamai Technologies
 Updates: 9325 (if approved)                                    N. Aviram
-Intended status: Best Current Practice                  30 December 2024
-Expires: 3 July 2025
+Intended status: Best Current Practice                   29 January 2025
+Expires: 2 August 2025
 
 
                    New Protocols Must Require TLS 1.3
@@ -19,8 +19,9 @@ Abstract
    deficiencies with TLS 1.2, such as removing error-prone cryptographic
    primitives and encrypting more of the traffic so that it is not
    readable by outsiders.  For these reasons, new protocols must require
-   and assume the existence of TLS 1.3.  This prescription does not
-   pertain to DTLS (in any DTLS version); it pertains to TLS only.
+   and assume the existence of TLS 1.3.  As DTLS 1.3 is not widely
+   available or deployed, this prescription does not pertain to DTLS (in
+   any DTLS version); it pertains to TLS only.
 
    This document updates RFC9325.
 
@@ -54,11 +55,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 July 2025.
+   This Internet-Draft will expire on 2 August 2025.
 
 Copyright Notice
 
-   Copyright (c) 2024 IETF Trust and the persons identified as the
+   Copyright (c) 2025 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -118,8 +119,9 @@ Table of Contents
 
    This document specifies that, since TLS 1.3 use is widespread, new
    protocols must require and assume its existence.  It updates
-   [RFC9325] as described in Section 5.  This prescription does not
-   pertain to DTLS (in any DTLS version); it pertains to TLS only.
+   [RFC9325] as described in Section 5.  As DTLS 1.3 is not widely
+   available or deployed, this prescription does not pertain to DTLS (in
+   any DTLS version); it pertains to TLS only.
 
 2.  Conventions and Definitions
 
@@ -131,22 +133,8 @@ Table of Contents
 
 3.  Implications for post-quantum cryptography
 
-   Cryptographically-relevant quantum computers, once available, will
-   have a huge impact on TLS traffic.  In 2016, the US National
-   Institute of Standards and Technology (NIST) started a multi-year
-   effort to standardize algorithms that will be "safe" once quantum
-   computers are feasible [PQC].  The first IETF discussions happened
-   around the same time [CFRGSLIDES].
-
-   In 2024 NIST released standards for [ML-KEM], [ML-DSA], and
-   [SLH-DSA].  While industry was waiting for NIST to finish
-   standardization, the IETF has had several efforts underway.  A
-   working group was formed in early 2023 to work on operational and
-   transitional uses of PQC in IETF protocols, [PQUIPWG].  Several other
-   working groups, including LAMPS [LAMPSWG], TLS [TLSWG], and IPSECME
-   [IPSECMEWG], are working on drafts to support hybrid algorithms and
-   identifiers, for use during a transition from classic to a post-
-   quantum world.
+   Cryptographically-relevant quantum computers [PQC], once available,
+   will have a huge impact on TLS traffic.
 
    For TLS it is important to note that the focus of these efforts is
    TLS 1.3 or later, and that TLS 1.2 will not be supported (see
@@ -231,7 +219,7 @@ Table of Contents
    first attempt to implement the cipher suites in constant time
    introduced an even more severe vulnerability [LUCKY13FIX].  There
    have been further similar vulnerabilities throughout the years
-   exploiting CBC cipher suites; refer to e.g.  [CBCSCANNING] for an
+   exploiting CBC cipher suites; refer to e.g. [CBCSCANNING] for an
    example and a survey of similar works.
 
    And lastly, historically the protocol was affected by several other
@@ -269,9 +257,9 @@ Table of Contents
    [TLS12FROZEN]
               Salz, R. and N. Aviram, "TLS 1.2 is in Feature Freeze",
               Work in Progress, Internet-Draft, draft-ietf-tls-tls12-
-              frozen-05, 20 December 2024,
+              frozen-06, 29 January 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-tls-
-              tls12-frozen-05>.
+              tls12-frozen-06>.
 
    [TLS13]    Rescorla, E., "The Transport Layer Security (TLS) Protocol
               Version 1.3", Work in Progress, Internet-Draft, draft-
@@ -292,11 +280,6 @@ Table of Contents
               Oracle Vulnerabilities", n.d.,
               <https://www.usenix.org/system/files/sec19-merget.pdf>.
 
-   [CFRGSLIDES]
-              McGrew, D., "Post Quantum Secure Cryptography Discussion",
-              n.d., <https://www.ietf.org/proceedings/95/slides/slides-
-              95-cfrg-4.pdf>.
-
    [DNSTLS]   Dickinson, S., Gillmor, D., and T. Reddy, "Usage Profiles
               for DNS over TLS and DNS over DTLS", RFC 8310,
               DOI 10.17487/RFC8310, March 2018,
@@ -316,13 +299,6 @@ Table of Contents
               September 2024, <https://datatracker.ietf.org/doc/html/
               draft-ietf-tls-deprecate-obsolete-kex-05>.
 
-   [IPSECMEWG]
-              "IP Security Maintenance and Extensions", n.d.,
-              <https://datatracker.ietf.org/wg/ipsecme/about/>.
-
-   [LAMPSWG]  "Limited Additional Mechanisms for PXIK and SMIME", n.d.,
-              <https://datatracker.ietf.org/wg/lamps/about/>.
-
    [LUCKY13]  Al Fardan, N. J. and K. G. Paterson, "Lucky Thirteen:
               Breaking the TLS and DTLS record protocols", n.d.,
               <http://www.isg.rhul.ac.uk/tls/TLStiming.pdf>.
@@ -332,19 +308,9 @@ Table of Contents
               libraries", n.d., <https://nds.rub.de/media/nds/
               veroeffentlichungen/2016/10/19/tls-attacker-ccs16.pdf>.
 
-   [ML-DSA]   "Module-Lattice-Based Key Digital Signature Standard",
-              August 2024, <https://csrc.nist.gov/pubs/fips/204/final>.
-
-   [ML-KEM]   "Module-Lattice-Based Key-Encapsulation Mechanism
-              Standard", August 2024,
-              <https://csrc.nist.gov/pubs/fips/203/final>.
-
-   [PQC]      "Post=Quantum Cryptography", January 2017,
-              <https://csrc.nist.gov/projects/post-quantum-
+   [PQC]      "What Is Post-Quantum Cryptography?", August 2024,
+              <https://www.nist.gov/cybersecurity/what-post-quantum-
               cryptography>.
-
-   [PQUIPWG]  "Post-Quantum Use in Protocols", n.d.,
-              <https://datatracker.ietf.org/wg/pquip/about/>.
 
    [QUICTLS]  Thomson, M., Ed. and S. Turner, Ed., "Using TLS to Secure
               QUIC", RFC 9001, DOI 10.17487/RFC9001, May 2021,
@@ -369,16 +335,10 @@ Table of Contents
               DOI 10.17487/RFC7465, February 2015,
               <https://www.rfc-editor.org/rfc/rfc7465>.
 
-   [SLH-DSA]  "Stateless Hash-Based Key-Digital Signature Standard",
-              August 2024, <https://csrc.nist.gov/pubs/fips/205/final>.
-
    [SLOTH]    Bhargavan, K. and G. Leurent, "Transcript collision
               attacks: Breaking authentication in TLS, IKE, and SSH",
               n.d., <https://inria.hal.science/hal-01244855/file/
               SLOTH_NDSS16.pdf>.
-
-   [TLSWG]    "Transport Layer Security", n.d.,
-              <https://datatracker.ietf.org/wg/tls/about/>.
 
    [TRIPLESHAKE]
               "Triple Handshakes Considered Harmful Breaking and Fixing
