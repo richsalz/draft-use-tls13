@@ -36,42 +36,12 @@ normative:
   TLS12FROZEN: I-D.draft-ietf-tls-tls12-frozen
 
 informative:
-  ML-KEM:
-    target: https://csrc.nist.gov/pubs/fips/203/final
-    title: "Module-Lattice-Based Key-Encapsulation Mechanism Standard"
-    date: "August 13, 2024"
-  ML-DSA:
-    target: https://csrc.nist.gov/pubs/fips/204/final
-    title: "Module-Lattice-Based Key Digital Signature Standard"
-    date: "August 13, 2024"
-  SLH-DSA:
-    target: https://csrc.nist.gov/pubs/fips/205/final
-    title: "Stateless Hash-Based Key-Digital Signature Standard"
-    date: "August 13, 2024"
   QUICTLS: RFC9001
   DNSTLS: RFC8310
   PQC:
-    target: https://csrc.nist.gov/projects/post-quantum-cryptography
-    date: "January, 2017"
-    title: Post=Quantum Cryptography
-  CFRGSLIDES:
-    target: https://www.ietf.org/proceedings/95/slides/slides-95-cfrg-4.pdf
-    title: Post Quantum Secure Cryptography Discussion
-    author:
-      ins: D. McGrew
-      name: David McGrew
-  PQUIPWG:
-    target: https://datatracker.ietf.org/wg/pquip/about/
-    title: Post-Quantum Use in Protocols
-  IPSECMEWG:
-    target: https://datatracker.ietf.org/wg/ipsecme/about/
-    title: IP Security Maintenance and Extensions
-  LAMPSWG:
-    target: https://datatracker.ietf.org/wg/lamps/about/
-    title: Limited Additional Mechanisms for PXIK and SMIME
-  TLSWG:
-    target: https://datatracker.ietf.org/wg/tls/about/
-    title: Transport Layer Security
+    target: https://www.nist.gov/cybersecurity/what-post-quantum-cryptography
+    date: "August, 2024"
+    title: What Is Post-Quantum Cryptography?
   TRIPLESHAKE:
     target: https://mitls.org/pages/attacks/3SHAKE
     title: Triple Handshakes Considered Harmful Breaking and Fixing Authentication over TLS
@@ -156,7 +126,8 @@ with TLS
 more of the traffic so that it is not readable by outsiders.
 For these reasons, new protocols must require and
 assume the existence of TLS 1.3.
-This prescription does not pertain to DTLS (in any DTLS version); it pertains to
+As DTLS 1.3 is not widely available or deployed,
+this prescription does not pertain to DTLS (in any DTLS version); it pertains to
 TLS only.
 
 This document updates RFC9325.
@@ -199,7 +170,8 @@ any additional configuration.
 This document specifies that, since TLS 1.3 use is widespread, new protocols
 must require and assume its existence.
 It updates {{RFC9325}} as described in {{rfc9325-updates}}.
-This prescription does not pertain to DTLS (in any DTLS version); it pertains to
+As DTLS 1.3 is not widely available or deployed,
+this prescription does not pertain to DTLS (in any DTLS version); it pertains to
 TLS only.
 
 # Conventions and Definitions
@@ -209,22 +181,7 @@ TLS only.
 # Implications for post-quantum cryptography
 
 Cryptographically-relevant
-quantum computers, once available, will have a huge impact on TLS traffic.
-In 2016, the US National Institute of Standards and Technology (NIST) started a
-multi-year effort to standardize algorithms that will be "safe"
-once quantum computers are feasible {{PQC}}. The first IETF discussions happened
-around the same time {{CFRGSLIDES}}.
-
-In 2024 NIST released standards for {{ML-KEM}}, {{ML-DSA}}, and {{SLH-DSA}}.
-While industry was waiting for NIST to finish standardization, the
-IETF has had several efforts underway.
-A working group was formed in early 2023 to work on operational and
-transitional uses of PQC in IETF protocols,
-{{PQUIPWG}}.
-Several other working groups, including LAMPS {{LAMPSWG}}, TLS {{TLSWG}},
-and IPSECME {{IPSECMEWG}}, are working on
-drafts to support hybrid algorithms and identifiers, for use during a
-transition from classic to a post-quantum world.
+quantum computers [PQC], once available, will have a huge impact on TLS traffic.
 
 For TLS it is important to note that the focus of these efforts is TLS 1.3
 or later, and that TLS 1.2 will not be supported (see {{TLS12FROZEN}}).
