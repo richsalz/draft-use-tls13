@@ -220,7 +220,7 @@ Table of Contents
    first attempt to implement the cipher suites in constant time
    introduced an even more severe vulnerability [LUCKY13FIX].  There
    have been further similar vulnerabilities throughout the years
-   exploiting CBC cipher suites; refer to e.g. [CBCSCANNING] for an
+   exploiting CBC cipher suites; refer to e.g.  [CBCSCANNING] for an
    example and a survey of similar works.
 
    And lastly, historically the protocol was affected by several other
