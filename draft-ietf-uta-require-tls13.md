@@ -137,28 +137,10 @@ This document updates RFC9325.
 # Introduction {#sec-reasons}
 
 TLS 1.2 {{TLS12}} is in use and can be configured such that
-it provides good
-security properties. However, this protocol version suffers from several
-deficiencies:
-
-1. While application layer traffic is always encrypted, most of the handshake
-messages are not. Therefore, the privacy provided is suboptimal.
-This is a protocol issue that cannot be addressed by configuration.
-
-2. The list of cryptographic primitives specified for the protocol, both in-use
-primitives and deprecated ones, includes several primitives that have
-been a source for
-vulnerabilities throughout the years, such as RSA key exchange, CBC cipher suites,
-and problematic finite-field Diffie-Hellman group negotiation.
-These issues could be addressed through proper configuration; however,
-experience shows that configuration mistakes are common, especially when
-deploying cryptography.
-See {{sec-considerations}} for elaboration.
-
-3. The base protocol does not provide security against some
-types of attacks (see {{sec-considerations}});
-extensions are required to provide
-security.
+it provides good security properties.
+However, this protocol version suffers from several
+deficiencies, as described in {{sec-considerations}}.
+Note that addressing them usually requires bespoke configuration.
 
 TLS 1.3 {{TLS13}} is also in
 widespread use and fixes most known deficiencies with TLS 1.2, such as
@@ -270,9 +252,14 @@ There have been further similar vulnerabilities throughout the
 years exploiting CBC cipher suites; refer to e.g. {{CBCSCANNING}}
 for an example and a survey of similar works.
 
-And lastly, historically the protocol was affected by several other attacks that
+In addition, TLS 1.2 was affected by several other attacks that
 TLS 1.3 is immune to:
 BEAST {{BEAST}}, Logjam {{WEAKDH}}, FREAK {{FREAK}}, and SLOTH {{SLOTH}}.
+
+And finally, while
+application layer traffic is always encrypted, most of the handshake
+messages are not. Therefore, the privacy provided is suboptimal.
+This is a protocol issue that cannot be addressed by configuration.
 
 # IANA Considerations {#iana}
 
