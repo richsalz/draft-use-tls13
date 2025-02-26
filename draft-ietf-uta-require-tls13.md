@@ -180,14 +180,18 @@ TLS only.
 
 # Implications for post-quantum cryptography
 
-Cryptographically-relevant quantum computers, once available, will
+Cryptographically-relevant quantum computers (CRQC), once available, will
 have a huge impact on TLS traffic. To mitigate this, TLS applications
-will need to migrate to post-quantum cryptography [PQC].
+will need to migrate to post-quantum cryptography (PQC) [PQC].
+Detailed consideration of when any application requires PQC, or when
+a CRQC is a threat they need to protect against, is beyond the
+scope of this document.
 
 For TLS it is important to note that the focus of these efforts is TLS 1.3
 or later, and that TLS 1.2 will not be supported (see {{TLS12FROZEN}}).
 This is one more reason for new protocols to default to TLS 1.3, where
-post-quantum cryptography is expected to be supported.
+PQC is actively being standardized, as this gives new applications
+the option to use PQC.
 
 # TLS Use by Other Protocols and Applications
 
