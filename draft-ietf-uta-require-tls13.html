@@ -1217,45 +1217,22 @@ TLS only.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
 <p id="section-1-1">TLS 1.2 <span>[<a href="#TLS12" class="cite xref">TLS12</a>]</span> is in use and can be configured such that
-it provides good
-security properties. However, this protocol version suffers from several
-deficiencies:<a href="#section-1-1" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-1-2">
-<li id="section-1-2.1">
-          <p id="section-1-2.1.1">While application layer traffic is always encrypted, most of the handshake
-messages are not. Therefore, the privacy provided is suboptimal.
-This is a protocol issue that cannot be addressed by configuration.<a href="#section-1-2.1.1" class="pilcrow">¶</a></p>
-</li>
-        <li id="section-1-2.2">
-          <p id="section-1-2.2.1">The list of cryptographic primitives specified for the protocol, both in-use
-primitives and deprecated ones, includes several primitives that have
-been a source for
-vulnerabilities throughout the years, such as RSA key exchange, CBC cipher suites,
-and problematic finite-field Diffie-Hellman group negotiation.
-These issues could be addressed through proper configuration; however,
-experience shows that configuration mistakes are common, especially when
-deploying cryptography.
-See <a href="#sec-considerations" class="auto internal xref">Section 6</a> for elaboration.<a href="#section-1-2.2.1" class="pilcrow">¶</a></p>
-</li>
-        <li id="section-1-2.3">
-          <p id="section-1-2.3.1">The base protocol does not provide security against some
-types of attacks (see <a href="#sec-considerations" class="auto internal xref">Section 6</a>);
-extensions are required to provide
-security.<a href="#section-1-2.3.1" class="pilcrow">¶</a></p>
-</li>
-      </ol>
-<p id="section-1-3">TLS 1.3 <span>[<a href="#TLS13" class="cite xref">TLS13</a>]</span> is also in
+it provides good security properties.
+However, this protocol version suffers from several
+deficiencies, as described in <a href="#sec-considerations" class="auto internal xref">Section 6</a>.
+Note that addressing them usually requires bespoke configuration.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">TLS 1.3 <span>[<a href="#TLS13" class="cite xref">TLS13</a>]</span> is also in
 widespread use and fixes most known deficiencies with TLS 1.2, such as
 encrypting more of the traffic so that it is not readable by outsiders and
 removing most cryptographic primitives considered dangerous. Importantly, TLS
 1.3 enjoys robust security proofs and provides excellent security without
-any additional configuration.<a href="#section-1-3" class="pilcrow">¶</a></p>
-<p id="section-1-4">This document specifies that, since TLS 1.3 use is widespread, new protocols
+any additional configuration.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-3">This document specifies that, since TLS 1.3 use is widespread, new protocols
 must require and assume its existence.
 It updates <span>[<a href="#RFC9325" class="cite xref">RFC9325</a>]</span> as described in <a href="#rfc9325-updates" class="auto internal xref">Section 5</a>.
 As DTLS 1.3 is not widely available or deployed,
 this prescription does not pertain to DTLS (in any DTLS version); it pertains to
-TLS only.<a href="#section-1-4" class="pilcrow">¶</a></p>
+TLS only.<a href="#section-1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="conventions-and-definitions">
@@ -1274,17 +1251,13 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       <h2 id="name-implications-for-post-quant">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-implications-for-post-quant" class="section-name selfRef">Implications for post-quantum cryptography</a>
       </h2>
-<p id="section-3-1">Cryptographically-relevant quantum computers (CRQC), once available, will
+<p id="section-3-1">Cryptographically-relevant quantum computers, once available, will
 have a huge impact on TLS traffic. To mitigate this, TLS applications
-will need to migrate to post-quantum cryptography (PQC) <span>[<a href="#PQC" class="cite xref">PQC</a>]</span>.
-Detailed consideration of when any application requires PQC, or when
-a CRQC is a threat they need to protect against, is beyond the
-scope of this document.<a href="#section-3-1" class="pilcrow">¶</a></p>
+will need to migrate to post-quantum cryptography <span>[<a href="#PQC" class="cite xref">PQC</a>]</span>.<a href="#section-3-1" class="pilcrow">¶</a></p>
 <p id="section-3-2">For TLS it is important to note that the focus of these efforts is TLS 1.3
 or later, and that TLS 1.2 will not be supported (see <span>[<a href="#TLS12FROZEN" class="cite xref">TLS12FROZEN</a>]</span>).
 This is one more reason for new protocols to default to TLS 1.3, where
-PQC is actively being standardized, as this gives new applications
-the option to use PQC.<a href="#section-3-2" class="pilcrow">¶</a></p>
+post-quantum cryptography is expected to be supported.<a href="#section-3-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="tls-use-by-other-protocols-and-applications">
@@ -1376,9 +1349,13 @@ constant time introduced an even more severe vulnerability <span>[<a href="#LUCK
 There have been further similar vulnerabilities throughout the
 years exploiting CBC cipher suites; refer to e.g. <span>[<a href="#CBCSCANNING" class="cite xref">CBCSCANNING</a>]</span>
 for an example and a survey of similar works.<a href="#section-6-4" class="pilcrow">¶</a></p>
-<p id="section-6-5">And lastly, historically the protocol was affected by several other attacks that
+<p id="section-6-5">In addition, TLS 1.2 was affected by several other attacks that
 TLS 1.3 is immune to:
 BEAST <span>[<a href="#BEAST" class="cite xref">BEAST</a>]</span>, Logjam <span>[<a href="#WEAKDH" class="cite xref">WEAKDH</a>]</span>, FREAK <span>[<a href="#FREAK" class="cite xref">FREAK</a>]</span>, and SLOTH <span>[<a href="#SLOTH" class="cite xref">SLOTH</a>]</span>.<a href="#section-6-5" class="pilcrow">¶</a></p>
+<p id="section-6-6">And finally, while
+application layer traffic is always encrypted, most of the handshake
+messages are not. Therefore, the privacy provided is suboptimal.
+This is a protocol issue that cannot be addressed by configuration.<a href="#section-6-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana">
