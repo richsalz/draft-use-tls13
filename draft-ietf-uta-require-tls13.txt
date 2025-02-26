@@ -5,8 +5,8 @@
 Using TLS in Applications                                        R. Salz
 Internet-Draft                                       Akamai Technologies
 Updates: 9325 (if approved)                                    N. Aviram
-Intended status: Best Current Practice                   29 January 2025
-Expires: 2 August 2025
+Intended status: Best Current Practice                  26 February 2025
+Expires: 30 August 2025
 
 
                    New Protocols Must Require TLS 1.3
@@ -55,7 +55,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 2 August 2025.
+   This Internet-Draft will expire on 30 August 2025.
 
 Copyright Notice
 
@@ -133,15 +133,18 @@ Table of Contents
 
 3.  Implications for post-quantum cryptography
 
-   Cryptographically-relevant quantum computers, once available, will
-   have a huge impact on TLS traffic.  To mitigate this, TLS
-   applications will need to migrate to post-quantum cryptography [PQC].
+   Cryptographically-relevant quantum computers (CRQC), once available,
+   will have a huge impact on TLS traffic.  To mitigate this, TLS
+   applications will need to migrate to post-quantum cryptography (PQC)
+   [PQC].  Detailed consideration of when any application requires PQC,
+   or when a CRQC is a threat they need to protect against, is beyond
+   the scope of this document.
 
    For TLS it is important to note that the focus of these efforts is
    TLS 1.3 or later, and that TLS 1.2 will not be supported (see
    [TLS12FROZEN]).  This is one more reason for new protocols to default
-   to TLS 1.3, where post-quantum cryptography is expected to be
-   supported.
+   to TLS 1.3, where PQC is actively being standardized, as this gives
+   new applications the option to use PQC.
 
 4.  TLS Use by Other Protocols and Applications
 
@@ -220,7 +223,7 @@ Table of Contents
    first attempt to implement the cipher suites in constant time
    introduced an even more severe vulnerability [LUCKY13FIX].  There
    have been further similar vulnerabilities throughout the years
-   exploiting CBC cipher suites; refer to e.g.  [CBCSCANNING] for an
+   exploiting CBC cipher suites; refer to e.g. [CBCSCANNING] for an
    example and a survey of similar works.
 
    And lastly, historically the protocol was affected by several other
@@ -264,9 +267,9 @@ Table of Contents
 
    [TLS13]    Rescorla, E., "The Transport Layer Security (TLS) Protocol
               Version 1.3", Work in Progress, Internet-Draft, draft-
-              ietf-tls-rfc8446bis-11, 14 September 2024,
+              ietf-tls-rfc8446bis-12, 17 February 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-tls-
-              rfc8446bis-11>.
+              rfc8446bis-12>.
 
 8.2.  Informative References
 
