@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-02-25T01:39:34.321499+00:00",
+  "timestamp": "2025-02-27T01:39:15.025486+00:00",
   "repo": "richsalz/draft-use-tls13",
   "labels": [
     {
@@ -142,24 +142,54 @@
       "id": "PR_kwDOLo4CmM6MFbVh",
       "title": "Address Geoff's DNSDIR feedback",
       "url": "https://github.com/richsalz/draft-use-tls13/pull/4",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "richsalz",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2025-02-21T18:03:10Z",
-      "updatedAt": "2025-02-21T18:03:10Z",
+      "updatedAt": "2025-02-26T21:28:38Z",
       "baseRepository": "richsalz/draft-use-tls13",
       "baseRefName": "main",
       "baseRefOid": "cecdf4925765a6c8621b4b303e66b453d901ea34",
       "headRepository": "richsalz/draft-use-tls13",
       "headRefName": "dndir-review",
       "headRefOid": "0df39f7893906715429fc1852fd46f6e888b4026",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-02-26T21:28:34Z",
+      "mergedAt": "2025-02-26T21:28:34Z",
+      "mergedBy": "richsalz",
+      "mergeCommit": {
+        "oid": "099942ee5f4343e38e83c216d845b596055c6794"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 5,
+      "id": "PR_kwDOLo4CmM6MsBt3",
+      "title": "Caveats about threat model for PQC",
+      "url": "https://github.com/richsalz/draft-use-tls13/pull/5",
+      "state": "MERGED",
+      "author": "richsalz",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "In response to Geoff's DNSDIR review and discussion.",
+      "createdAt": "2025-02-26T18:04:46Z",
+      "updatedAt": "2025-02-26T21:29:01Z",
+      "baseRepository": "richsalz/draft-use-tls13",
+      "baseRefName": "main",
+      "baseRefOid": "cecdf4925765a6c8621b4b303e66b453d901ea34",
+      "headRepository": "richsalz/draft-use-tls13",
+      "headRefName": "dndir-review-1",
+      "headRefOid": "12d47def2f17ac61f00350e27dee8ae0685478b1",
+      "closedAt": "2025-02-26T21:28:58Z",
+      "mergedAt": "2025-02-26T21:28:58Z",
+      "mergedBy": "richsalz",
+      "mergeCommit": {
+        "oid": "d3bb46ebb23b1d5ab1e2f2eac0d82e3679bc78c5"
+      },
       "comments": [],
       "reviews": []
     }
