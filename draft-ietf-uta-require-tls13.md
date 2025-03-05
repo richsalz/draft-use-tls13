@@ -150,8 +150,7 @@ TLS 1.3 {{TLS13}} is also in
 widespread use and fixes most known deficiencies with TLS 1.2, such as
 encrypting more of the traffic so that it is not readable by outsiders and
 removing most cryptographic primitives considered dangerous. Importantly, compared to TLS1.2, TLS
-1.3 provides better without
-any additional configuration.
+1.3 provides better security without any additional configuration.
 
 This document specifies that, since TLS 1.3 use is widespread, new protocols with TLS support
 must require and assume its existence.
