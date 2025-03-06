@@ -188,14 +188,18 @@ TLS 1.2 as the default, while also allowing TLS 1.3.
 For newer specifications that choose to support TLS 1.2, those preferences are
 to be reversed.
 
-The initial TLS handshake allows a client to specify which versions of
-the TLS protocol it supports and the server is intended to pick the highest
-version that it also supports.
-This is known as the "TLS version negotiation," and
-many TLS libraries provide a way for applications to specify the range
-of versions.
-When the API allows it, clients SHOULD specify just the minimum version they
-want.
+The initial TLS handshake allows a client to specify which versions of the
+TLS protocol it supports and the server is intended to pick the highest
+version that it also supports.  This is known as the "TLS version
+negotiation," and protocol and negotiation details are discussed in {{TLS13,
+Section 4.2.1}} and {{TLS12, Appendix E}}.  Many TLS libraries provide a way
+for applications to specify the range of versions they want, including an
+open interval where only the lowest or highest version is specified.
+
+If the application is using a TLS implementation that supports this,
+and if it knows that the TLS implementation will use the highest version
+supported, then
+clients SHOULD specify just the minimum version they want.
 This MUST be TLS 1.3 or TLS 1.2, depending on the circumstances described
 in the above paragraphs.
 
@@ -203,7 +207,7 @@ in the above paragraphs.
 
 RFC 9325 provides recommendations for ensuring the security of deployed
 services that use TLS and, unlike this document, DTLS as well.
-At this time it was published, it described availability of TLS 1.3
+At the time it was published, it described availability of TLS 1.3
 as "widely available." The transition and adoption mentioned in that
 documnent has grown, and this document now makes two small changes
 to the recommendations in {{RFC9325, Section 3.1.1}}:
