@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-03-04T01:40:48.768828+00:00",
+  "timestamp": "2025-03-06T01:40:53.230694+00:00",
   "repo": "richsalz/draft-use-tls13",
   "labels": [
     {
@@ -191,6 +191,54 @@
         "oid": "d3bb46ebb23b1d5ab1e2f2eac0d82e3679bc78c5"
       },
       "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 6,
+      "id": "PR_kwDOLo4CmM6NcCdb",
+      "title": "Some suggestions to -06",
+      "url": "https://github.com/richsalz/draft-use-tls13/pull/6",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-03-05T08:45:25Z",
+      "updatedAt": "2025-03-05T14:40:51Z",
+      "baseRepository": "richsalz/draft-use-tls13",
+      "baseRefName": "main",
+      "baseRefOid": "d3bb46ebb23b1d5ab1e2f2eac0d82e3679bc78c5",
+      "headRepository": "boucadair/draft-use-tls13",
+      "headRefName": "patch-1",
+      "headRefOid": "813ed55546279e3f749596639b16174b39f8c7d2",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "richsalz",
+          "authorAssociation": "OWNER",
+          "body": "I like all these changes!  Thank you.  I'll merge shortly.",
+          "createdAt": "2025-03-05T14:13:33Z",
+          "updatedAt": "2025-03-05T14:13:33Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "NONE",
+          "body": "Thanks, @richsalz.\r\n\r\nThere is one tiny thing I hesitated to change: \"This  MUST be TLS 1.3 or TLS 1.2\" to \"This MUST be TLS 1.2 or later\" as the to-be-rfc will fall under [BCP 195](https://datatracker.ietf.org/doc/bcp195/) that would (in theory) survive to future revisions.  ",
+          "createdAt": "2025-03-05T14:35:39Z",
+          "updatedAt": "2025-03-05T14:35:50Z"
+        },
+        {
+          "author": "richsalz",
+          "authorAssociation": "OWNER",
+          "body": "We had a discussion in the WG about \"or later\" and decided against that.  I couldn't find the discussion in the archives after looking briefly.\r\n",
+          "createdAt": "2025-03-05T14:40:50Z",
+          "updatedAt": "2025-03-05T14:40:50Z"
+        }
+      ],
       "reviews": []
     }
   ]
