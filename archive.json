@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-03-06T01:40:53.230694+00:00",
+  "timestamp": "2025-03-09T01:20:44.779963+00:00",
   "repo": "richsalz/draft-use-tls13",
   "labels": [
     {
@@ -239,6 +239,32 @@
           "updatedAt": "2025-03-05T14:40:50Z"
         }
       ],
+      "reviews": []
+    },
+    {
+      "number": 7,
+      "id": "PR_kwDOLo4CmM6NqDi4",
+      "title": "Clarify library/version usage",
+      "url": "https://github.com/richsalz/draft-use-tls13/pull/7",
+      "state": "OPEN",
+      "author": "richsalz",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Feedback from Erik Kline",
+      "createdAt": "2025-03-06T15:30:56Z",
+      "updatedAt": "2025-03-06T15:30:56Z",
+      "baseRepository": "richsalz/draft-use-tls13",
+      "baseRefName": "main",
+      "baseRefOid": "d3bb46ebb23b1d5ab1e2f2eac0d82e3679bc78c5",
+      "headRepository": "richsalz/draft-use-tls13",
+      "headRefName": "kline-review",
+      "headRefOid": "4c0266cb36dd98a4de2ff93b254bf6d219fa0ef1",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
       "reviews": []
     }
   ]
