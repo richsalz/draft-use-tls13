@@ -130,7 +130,8 @@ As DTLS 1.3 is not widely available or deployed,
 this prescription does not pertain to DTLS (in any DTLS version); it pertains to
 TLS only.
 
-This document updates RFC9325.
+This document updates RFC9325 and discusses post-quantum cryptography
+and fixed weaknesses in TLS 1.2 as a rationale for that update.
 
 --- middle
 
@@ -156,6 +157,9 @@ As DTLS 1.3 is not widely available or deployed,
 this prescription does not pertain to DTLS (in any DTLS version); it pertains to
 TLS only.
 
+This document updates RFC9325 and discusses post-quantum cryptography
+and fixed weaknesses in TLS 1.2 as a rationale for that update.
+
 # Conventions and Definitions
 
 {::boilerplate bcp14-tagged}
@@ -169,7 +173,8 @@ Detailed consideration of when any application requires PQC, or when
 a CRQC is a threat they need to protect against, is beyond the
 scope of this document.
 
-For TLS it is important to note that the focus of these efforts is TLS 1.3
+For TLS it is important to note that the focus of these efforts within
+the TLS WG is TLS 1.3
 or later, and that TLS 1.2 will not be supported (see {{TLS12FROZEN}}).
 This is one more reason for new protocols to default to TLS 1.3, where
 PQC is actively being standardized, as this gives new applications
