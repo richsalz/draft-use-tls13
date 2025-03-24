@@ -5,8 +5,8 @@
 Using TLS in Applications                                        R. Salz
 Internet-Draft                                       Akamai Technologies
 Updates: 9325 (if approved)                                    N. Aviram
-Intended status: Best Current Practice                  26 February 2025
-Expires: 30 August 2025
+Intended status: Best Current Practice                     24 March 2025
+Expires: 25 September 2025
 
 
                    New Protocols Must Require TLS 1.3
@@ -23,7 +23,8 @@ Abstract
    available or deployed, this prescription does not pertain to DTLS (in
    any DTLS version); it pertains to TLS only.
 
-   This document updates RFC9325.
+   This document updates RFC9325 and discusses post-quantum cryptography
+   and fixed weaknesses in TLS 1.2 as a rationale for that update.
 
 About This Document
 
@@ -55,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 August 2025.
+   This Internet-Draft will expire on 25 September 2025.
 
 Copyright Notice
 
@@ -105,6 +106,9 @@ Table of Contents
    available or deployed, this prescription does not pertain to DTLS (in
    any DTLS version); it pertains to TLS only.
 
+   This document updates RFC9325 and discusses post-quantum cryptography
+   and fixed weaknesses in TLS 1.2 as a rationale for that update.
+
 2.  Conventions and Definitions
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
@@ -122,11 +126,11 @@ Table of Contents
    or when a CRQC is a threat they need to protect against, is beyond
    the scope of this document.
 
-   For TLS it is important to note that the focus of these efforts is
-   TLS 1.3 or later, and that TLS 1.2 will not be supported (see
-   [TLS12FROZEN]).  This is one more reason for new protocols to default
-   to TLS 1.3, where PQC is actively being standardized, as this gives
-   new applications the option to use PQC.
+   For TLS it is important to note that the focus of these efforts
+   within the TLS WG is TLS 1.3 or later, and that TLS 1.2 will not be
+   supported (see [TLS12FROZEN]).  This is one more reason for new
+   protocols to default to TLS 1.3, where PQC is actively being
+   standardized, as this gives new applications the option to use PQC.
 
 4.  TLS Use by Other Protocols and Applications
 
@@ -143,19 +147,25 @@ Table of Contents
    The initial TLS handshake allows a client to specify which versions
    of the TLS protocol it supports and the server is intended to pick
    the highest version that it also supports.  This is known as the "TLS
-   version negotiation," and many TLS libraries provide a way for
-   applications to specify the range of versions.  When the API allows
-   it, clients SHOULD specify just the minimum version they want.  This
-   MUST be TLS 1.3 or TLS 1.2, depending on the circumstances described
-   in the above paragraphs.
+   version negotiation," and protocol and negotiation details are
+   discussed in [TLS13], Section 4.2.1 and [TLS12], Appendix E.  Many
+   TLS libraries provide a way for applications to specify the range of
+   versions they want, including an open interval where only the lowest
+   or highest version is specified.
+
+   If the application is using a TLS implementation that supports this,
+   and if it knows that the TLS implementation will use the highest
+   version supported, then clients SHOULD specify just the minimum
+   version they want.  This MUST be TLS 1.3 or TLS 1.2, depending on the
+   circumstances described in the above paragraphs.
 
 5.  Changes to RFC 9325
 
    RFC 9325 provides recommendations for ensuring the security of
    deployed services that use TLS and, unlike this document, DTLS as
-   well.  At this time it was published, it described availability of
-   TLS 1.3 as "widely available."  The transition and adoption mentioned
-   in that documnent has grown, and this document now makes two small
+   well.  At the time it was published, it described availability of TLS
+   1.3 as "widely available."  The transition and adoption mentioned in
+   that documnent has grown, and this document now makes two small
    changes to the recommendations in [RFC9325], Section 3.1.1:
 
    *  That section says that TLS 1.3 SHOULD be supported; this document
