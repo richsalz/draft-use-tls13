@@ -216,7 +216,7 @@ RFC 9325 provides recommendations for ensuring the security of deployed
 services that use TLS and, unlike this document, DTLS as well.
 At the time it was published, it described availability of TLS 1.3
 as "widely available." The transition and adoption mentioned in that
-documnent has grown, and this document now makes two small changes
+document has grown, and this document now makes two small changes
 to the recommendations in {{RFC9325, Section 3.1.1}}:
 
 - That section says that TLS 1.3 SHOULD be supported; this document says
