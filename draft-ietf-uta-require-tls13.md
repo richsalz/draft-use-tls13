@@ -121,10 +121,11 @@ informative:
 
 TLS 1.2 is in use and can be configured such that it provides good security
 properties. TLS 1.3 use is increasing, and fixes some known deficiencies
-with TLS
-1.2, such as removing error-prone cryptographic primitives and encrypting
+with TLS 1.2.
+Examples of this include
+removing error-prone cryptographic primitives and encrypting
 more of the traffic so that it is not readable by outsiders.
-For these reasons, new protocols must require and
+For these reasons, new protocols that use TLS must require and
 assume the existence of TLS 1.3.
 As DTLS 1.3 is not widely available or deployed,
 this prescription does not pertain to DTLS (in any DTLS version); it pertains to
@@ -144,14 +145,15 @@ deficiencies, as described in {{sec-considerations}}.
 Note that addressing them usually requires bespoke configuration.
 
 TLS 1.3 {{TLS13}} is also in
-widespread use and fixes most known deficiencies with TLS 1.2, such as
+widespread use and fixes most known deficiencies with TLS 1.2.
+Examples of this include
 encrypting more of the traffic so that it is not readable by outsiders and
-removing most cryptographic primitives considered dangerous. Importantly, TLS
-1.3 enjoys robust security proofs and provides excellent security without
+removing most cryptographic primitives considered dangerous. Importantly, the
+protocol has had comprehensive security proofs and should provide excellent security without
 any additional configuration.
 
 This document specifies that, since TLS 1.3 use is widespread, new protocols
-must require and assume its existence.
+that use TLS must require and assume its existence.
 It updates {{RFC9325}} as described in {{rfc9325-updates}}.
 As DTLS 1.3 is not widely available or deployed,
 this prescription does not pertain to DTLS (in any DTLS version); it pertains to
@@ -228,7 +230,7 @@ Again, these changes only apply to TLS, and not DTLS.
 # Security Considerations {#sec-considerations}
 
 TLS 1.2 was specified with several cryptographic primitives and design choices
-that have, over time, weakened its security. The purpose of this section is to
+that have, over time, become significantly weaker. The purpose of this section is to
 briefly survey several such prominent problems that have affected the protocol.
 It should be noted, however, that TLS 1.2 can be configured securely; it is
 merely much more difficult to configure it securely as opposed to using its
