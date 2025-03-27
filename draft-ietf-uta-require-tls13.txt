@@ -5,8 +5,8 @@
 Using TLS in Applications                                        R. Salz
 Internet-Draft                                       Akamai Technologies
 Updates: 9325 (if approved)                                    N. Aviram
-Intended status: Best Current Practice                     24 March 2025
-Expires: 25 September 2025
+Intended status: Best Current Practice                     27 March 2025
+Expires: 28 September 2025
 
 
                    New Protocols Must Require TLS 1.3
@@ -16,12 +16,13 @@ Abstract
 
    TLS 1.2 is in use and can be configured such that it provides good
    security properties.  TLS 1.3 use is increasing, and fixes some known
-   deficiencies with TLS 1.2, such as removing error-prone cryptographic
-   primitives and encrypting more of the traffic so that it is not
-   readable by outsiders.  For these reasons, new protocols must require
-   and assume the existence of TLS 1.3.  As DTLS 1.3 is not widely
-   available or deployed, this prescription does not pertain to DTLS (in
-   any DTLS version); it pertains to TLS only.
+   deficiencies with TLS 1.2.  Examples of this include removing error-
+   prone cryptographic primitives and encrypting more of the traffic so
+   that it is not readable by outsiders.  For these reasons, new
+   protocols that use TLS must require and assume the existence of TLS
+   1.3.  As DTLS 1.3 is not widely available or deployed, this
+   prescription does not pertain to DTLS (in any DTLS version); it
+   pertains to TLS only.
 
    This document updates RFC9325 and discusses post-quantum cryptography
    and fixed weaknesses in TLS 1.2 as a rationale for that update.
@@ -56,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 25 September 2025.
+   This Internet-Draft will expire on 28 September 2025.
 
 Copyright Notice
 
@@ -94,17 +95,17 @@ Table of Contents
    addressing them usually requires bespoke configuration.
 
    TLS 1.3 [TLS13] is also in widespread use and fixes most known
-   deficiencies with TLS 1.2, such as encrypting more of the traffic so
-   that it is not readable by outsiders and removing most cryptographic
-   primitives considered dangerous.  Importantly, TLS 1.3 enjoys robust
-   security proofs and provides excellent security without any
-   additional configuration.
+   deficiencies with TLS 1.2.  Examples of this include encrypting more
+   of the traffic so that it is not readable by outsiders and removing
+   most cryptographic primitives considered dangerous.  Importantly, the
+   protocol has had comprehensive security proofs and should provide
+   excellent security without any additional configuration.
 
    This document specifies that, since TLS 1.3 use is widespread, new
-   protocols must require and assume its existence.  It updates
-   [RFC9325] as described in Section 5.  As DTLS 1.3 is not widely
-   available or deployed, this prescription does not pertain to DTLS (in
-   any DTLS version); it pertains to TLS only.
+   protocols that use TLS must require and assume its existence.  It
+   updates [RFC9325] as described in Section 5.  As DTLS 1.3 is not
+   widely available or deployed, this prescription does not pertain to
+   DTLS (in any DTLS version); it pertains to TLS only.
 
    This document updates RFC9325 and discusses post-quantum cryptography
    and fixed weaknesses in TLS 1.2 as a rationale for that update.
@@ -179,11 +180,11 @@ Table of Contents
 6.  Security Considerations
 
    TLS 1.2 was specified with several cryptographic primitives and
-   design choices that have, over time, weakened its security.  The
-   purpose of this section is to briefly survey several such prominent
-   problems that have affected the protocol.  It should be noted,
-   however, that TLS 1.2 can be configured securely; it is merely much
-   more difficult to configure it securely as opposed to using its
+   design choices that have, over time, become significantly weaker.
+   The purpose of this section is to briefly survey several such
+   prominent problems that have affected the protocol.  It should be
+   noted, however, that TLS 1.2 can be configured securely; it is merely
+   much more difficult to configure it securely as opposed to using its
    modern successor, TLS 1.3.  See [RFC9325] for a more thorough guide
    on the secure deployment of TLS 1.2.
 
@@ -258,9 +259,9 @@ Table of Contents
    [TLS12FROZEN]
               Salz, R. and N. Aviram, "TLS 1.2 is in Feature Freeze",
               Work in Progress, Internet-Draft, draft-ietf-tls-tls12-
-              frozen-06, 29 January 2025,
+              frozen-07, 26 March 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-tls-
-              tls12-frozen-06>.
+              tls12-frozen-07>.
 
    [TLS13]    Rescorla, E., "The Transport Layer Security (TLS) Protocol
               Version 1.3", Work in Progress, Internet-Draft, draft-

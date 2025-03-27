@@ -10,10 +10,11 @@
 <meta content="
        TLS 1.2 is in use and can be configured such that it provides good security
 properties. TLS 1.3 use is increasing, and fixes some known deficiencies
-with TLS
-1.2, such as removing error-prone cryptographic primitives and encrypting
+with TLS 1.2.
+Examples of this include
+removing error-prone cryptographic primitives and encrypting
 more of the traffic so that it is not readable by outsiders.
-For these reasons, new protocols must require and
+For these reasons, new protocols that use TLS must require and
 assume the existence of TLS 1.3.
 As DTLS 1.3 is not widely available or deployed,
 this prescription does not pertain to DTLS (in any DTLS version); it pertains to
@@ -1061,7 +1062,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Salz &amp; Aviram</td>
-<td class="center">Expires 25 September 2025</td>
+<td class="center">Expires 28 September 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1077,12 +1078,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="https://www.rfc-editor.org/rfc/rfc9325" class="eref">9325</a> (if approved)</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-03-24" class="published">24 March 2025</time>
+<time datetime="2025-03-27" class="published">27 March 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Best Current Practice</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-09-25">25 September 2025</time></dd>
+<dd class="expires"><time datetime="2025-09-28">28 September 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1100,10 +1101,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
 <p id="section-abstract-1">TLS 1.2 is in use and can be configured such that it provides good security
 properties. TLS 1.3 use is increasing, and fixes some known deficiencies
-with TLS
-1.2, such as removing error-prone cryptographic primitives and encrypting
+with TLS 1.2.
+Examples of this include
+removing error-prone cryptographic primitives and encrypting
 more of the traffic so that it is not readable by outsiders.
-For these reasons, new protocols must require and
+For these reasons, new protocols that use TLS must require and
 assume the existence of TLS 1.3.
 As DTLS 1.3 is not widely available or deployed,
 this prescription does not pertain to DTLS (in any DTLS version); it pertains to
@@ -1145,7 +1147,7 @@ and fixed weaknesses in TLS 1.2 as a rationale for that update.<a href="#section
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 25 September 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 28 September 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1224,13 +1226,14 @@ However, this protocol version suffers from several
 deficiencies, as described in <a href="#sec-considerations" class="auto internal xref">Section 6</a>.
 Note that addressing them usually requires bespoke configuration.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">TLS 1.3 <span>[<a href="#TLS13" class="cite xref">TLS13</a>]</span> is also in
-widespread use and fixes most known deficiencies with TLS 1.2, such as
+widespread use and fixes most known deficiencies with TLS 1.2.
+Examples of this include
 encrypting more of the traffic so that it is not readable by outsiders and
-removing most cryptographic primitives considered dangerous. Importantly, TLS
-1.3 enjoys robust security proofs and provides excellent security without
+removing most cryptographic primitives considered dangerous. Importantly, the
+protocol has had comprehensive security proofs and should provide excellent security without
 any additional configuration.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">This document specifies that, since TLS 1.3 use is widespread, new protocols
-must require and assume its existence.
+that use TLS must require and assume its existence.
 It updates <span>[<a href="#RFC9325" class="cite xref">RFC9325</a>]</span> as described in <a href="#rfc9325-updates" class="auto internal xref">Section 5</a>.
 As DTLS 1.3 is not widely available or deployed,
 this prescription does not pertain to DTLS (in any DTLS version); it pertains to
@@ -1327,7 +1330,7 @@ it <span class="bcp14">MAY</span> be supported as described above.<a href="#sect
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
 <p id="section-6-1">TLS 1.2 was specified with several cryptographic primitives and design choices
-that have, over time, weakened its security. The purpose of this section is to
+that have, over time, become significantly weaker. The purpose of this section is to
 briefly survey several such prominent problems that have affected the protocol.
 It should be noted, however, that TLS 1.2 can be configured securely; it is
 merely much more difficult to configure it securely as opposed to using its
@@ -1406,7 +1409,7 @@ This is a protocol issue that cannot be addressed by configuration.<a href="#sec
 <dd class="break"></dd>
 <dt id="TLS12FROZEN">[TLS12FROZEN]</dt>
         <dd>
-<span class="refAuthor">Salz, R.</span> and <span class="refAuthor">N. Aviram</span>, <span class="refTitle">"TLS 1.2 is in Feature Freeze"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-tls12-frozen-06</span>, <time datetime="2025-01-29" class="refDate">29 January 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-tls12-frozen-06">https://datatracker.ietf.org/doc/html/draft-ietf-tls-tls12-frozen-06</a>&gt;</span>. </dd>
+<span class="refAuthor">Salz, R.</span> and <span class="refAuthor">N. Aviram</span>, <span class="refTitle">"TLS 1.2 is in Feature Freeze"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-tls12-frozen-07</span>, <time datetime="2025-03-26" class="refDate">26 March 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-tls12-frozen-07">https://datatracker.ietf.org/doc/html/draft-ietf-tls-tls12-frozen-07</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="TLS13">[TLS13]</dt>
       <dd>
