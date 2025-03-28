@@ -124,8 +124,9 @@ informative:
 
 TLS 1.2 is in use and can be configured such that it provides good security
 properties. TLS 1.3 use is increasing, and fixes some known deficiencies
-with TLS
-1.2, such as removing error-prone cryptographic primitives and encrypting
+with TLS 1.2.
+Examples of this include
+removing error-prone cryptographic primitives and encrypting
 more of the traffic so that it is not readable by outsiders.
 For these reasons, new protocols with TLS support must require and
 assume the existence of TLS 1.3.
@@ -134,7 +135,8 @@ As DTLS 1.3 is not widely available or deployed,
 this prescription does not pertain to DTLS (in any DTLS version); it pertains to
 TLS only.
 
-This document updates RFC 9325.
+This document updates RFC9325 and discusses post-quantum cryptography
+and fixed weaknesses in TLS 1.2 as a rationale for that update.
 
 --- middle
 
@@ -147,17 +149,22 @@ deficiencies, as described in {{sec-considerations}}.
 Addressing them usually requires bespoke configuration.
 
 TLS 1.3 {{TLS13}} is also in
-widespread use and fixes most known deficiencies with TLS 1.2, such as
+widespread use and fixes most known deficiencies with TLS 1.2.
+Examples of this include
 encrypting more of the traffic so that it is not readable by outsiders and
-removing most cryptographic primitives considered dangerous. Importantly, compared to TLS1.2, TLS
-1.3 provides better security without any additional configuration.
+removing most cryptographic primitives considered dangerous. Importantly, the
+protocol has had comprehensive security proofs and should provide excellent security without
+any additional configuration.
 
-This document specifies that, since TLS 1.3 use is widespread, new protocols with TLS support
-must require and assume its existence.
+This document specifies that, since TLS 1.3 use is widespread, new protocols
+that use TLS must require and assume its existence.
 It updates {{RFC9325}} as described in {{rfc9325-updates}}.
 As DTLS 1.3 is not widely available or deployed,
 this prescription does not pertain to DTLS (in any DTLS version); it pertains to
 TLS only.
+
+This document updates RFC9325 and discusses post-quantum cryptography
+and fixed weaknesses in TLS 1.2 as a rationale for that update.
 
 # Conventions and Definitions
 
@@ -172,7 +179,8 @@ Detailed considerations of when an application requires PQC or when
 a CRQC is a threat that an application need to protect against, are beyond the
 scope of this document.
 
-It is important to note that the focus of these PQC efforts for TLS is TLS 1.3
+For TLS it is important to note that the focus of these efforts within
+the TLS WG is TLS 1.3
 or later, and that TLS 1.2 will not be supported (see {{TLS12FROZEN}}).
 This is one more reason for new protocols requiring TLS service to default to TLS 1.3, where
 PQC is actively being standardized, as this gives new applications
@@ -191,14 +199,18 @@ TLS 1.2 as the default, while also allowing TLS 1.3.
 For newer specifications that choose to support TLS 1.2, those preferences are
 to be reversed.
 
-The initial TLS handshake allows a client to specify which versions of
-the TLS protocol it supports and the server is intended to pick the highest
-version that it also supports.
-This is known as the "TLS version negotiation," and
-many TLS libraries provide a way for applications to specify the range
-of versions.
-When the API allows it, clients SHOULD specify the minimum version they
-want.
+The initial TLS handshake allows a client to specify which versions of the
+TLS protocol it supports and the server is intended to pick the highest
+version that it also supports.  This is known as the "TLS version
+negotiation," and protocol and negotiation details are discussed in {{TLS13,
+Section 4.2.1}} and {{TLS12, Appendix E}}.  Many TLS libraries provide a way
+for applications to specify the range of versions they want, including an
+open interval where only the lowest or highest version is specified.
+
+If the application is using a TLS implementation that supports this,
+and if it knows that the TLS implementation will use the highest version
+supported, then
+clients SHOULD specify just the minimum version they want.
 This MUST be TLS 1.3 or TLS 1.2, depending on the circumstances described
 in the above paragraphs.
 
@@ -207,7 +219,7 @@ in the above paragraphs.
 {{!RFC9325}} provides recommendations for ensuring the security of deployed
 services that use TLS and, unlike this document, DTLS as well.
 At the time it was published, it described availability of TLS 1.3
-as "widely available". The transition and adoption mentioned in that
+as "widely available." The transition and adoption mentioned in that
 document has grown, and this document now makes two small changes
 to the recommendations in {{RFC9325, Section 3.1.1}}:
 
@@ -222,7 +234,7 @@ Again, these changes only apply to TLS, and not DTLS.
 # Security Considerations {#sec-considerations}
 
 TLS 1.2 was specified with several cryptographic primitives and design choices
-that have, over time, weakened its security. The purpose of this section is to
+that have, over time, become significantly weaker. The purpose of this section is to
 briefly survey several such prominent problems that have affected the protocol.
 It should be noted, however, that TLS 1.2 can be configured securely; it is
 merely much more difficult to configure it securely as opposed to using its
