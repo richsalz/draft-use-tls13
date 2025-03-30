@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-03-27T01:42:59.317755+00:00",
+  "timestamp": "2025-03-30T01:50:31.168686+00:00",
   "repo": "richsalz/draft-use-tls13",
   "labels": [
     {
@@ -205,13 +205,13 @@
       "labels": [],
       "body": "",
       "createdAt": "2025-03-05T08:45:25Z",
-      "updatedAt": "2025-03-05T14:40:51Z",
+      "updatedAt": "2025-03-28T15:40:46Z",
       "baseRepository": "richsalz/draft-use-tls13",
       "baseRefName": "main",
-      "baseRefOid": "d3bb46ebb23b1d5ab1e2f2eac0d82e3679bc78c5",
+      "baseRefOid": "ead0ca611bb8b3fb63a405baca60081b95e5e9cb",
       "headRepository": "boucadair/draft-use-tls13",
       "headRefName": "patch-1",
-      "headRefOid": "813ed55546279e3f749596639b16174b39f8c7d2",
+      "headRefOid": "c672dbab6167829e622d00c7dc40bf9c2e6438ef",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -237,9 +237,44 @@
           "body": "We had a discussion in the WG about \"or later\" and decided against that.  I couldn't find the discussion in the archives after looking briefly.\r\n",
           "createdAt": "2025-03-05T14:40:50Z",
           "updatedAt": "2025-03-05T14:40:50Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "NONE",
+          "body": "@richsalz , I saw that you published several revs (07, -08, -09, -10) but still don't see the agreed PR merged in :-(",
+          "createdAt": "2025-03-28T10:17:53Z",
+          "updatedAt": "2025-03-28T10:17:53Z"
+        },
+        {
+          "author": "richsalz",
+          "authorAssociation": "OWNER",
+          "body": "I rebased this, and some of your changes were removed in favor of later wording; please take a look.\r\n\r\nI am concerned about tying this document to a draft that isn't in the RFC editor queue (the PQUIP) document. I don't want to delay this.",
+          "createdAt": "2025-03-28T15:33:36Z",
+          "updatedAt": "2025-03-28T15:33:36Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "NONE",
+          "body": "Will review right now. \r\n\r\nThe PQUIP draft is only Informative and won't delay this one.",
+          "createdAt": "2025-03-28T15:39:16Z",
+          "updatedAt": "2025-03-28T15:39:16Z"
         }
       ],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOLo4CmM6ies4Q",
+          "commit": {
+            "abbreviatedOid": "c672dba"
+          },
+          "author": "boucadair",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "Checked right now. Looks good to me. Thanks, Rich",
+          "createdAt": "2025-03-28T15:40:46Z",
+          "updatedAt": "2025-03-28T15:40:46Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 7,
