@@ -5,11 +5,11 @@
 Using TLS in Applications                                        R. Salz
 Internet-Draft                                       Akamai Technologies
 Updates: 9325 (if approved)                                    N. Aviram
-Intended status: Best Current Practice                     27 March 2025
-Expires: 28 September 2025
+Intended status: Best Current Practice                      1 April 2025
+Expires: 3 October 2025
 
 
-                   New Protocols Must Require TLS 1.3
+          New Protocols with TLS Support Must Require TLS 1.3
                   draft-ietf-uta-require-tls13-latest
 
 Abstract
@@ -19,10 +19,12 @@ Abstract
    deficiencies with TLS 1.2.  Examples of this include removing error-
    prone cryptographic primitives and encrypting more of the traffic so
    that it is not readable by outsiders.  For these reasons, new
-   protocols that use TLS must require and assume the existence of TLS
-   1.3.  As DTLS 1.3 is not widely available or deployed, this
-   prescription does not pertain to DTLS (in any DTLS version); it
-   pertains to TLS only.
+   protocols with TLS support must require and assume the existence of
+   TLS 1.3.
+
+   As DTLS 1.3 is not widely available or deployed, this prescription
+   does not pertain to DTLS (in any DTLS version); it pertains to TLS
+   only.
 
    This document updates RFC9325 and discusses post-quantum cryptography
    and fixed weaknesses in TLS 1.2 as a rationale for that update.
@@ -57,7 +59,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 28 September 2025.
+   This Internet-Draft will expire on 3 October 2025.
 
 Copyright Notice
 
@@ -77,7 +79,7 @@ Table of Contents
 
    1.  Introduction
    2.  Conventions and Definitions
-   3.  Implications for post-quantum cryptography
+   3.  Implications for Post-Quantum Cryptography (PQC)
    4.  TLS Use by Other Protocols and Applications
    5.  Changes to RFC 9325
    6.  Security Considerations
@@ -91,8 +93,8 @@ Table of Contents
 
    TLS 1.2 [TLS12] is in use and can be configured such that it provides
    good security properties.  However, this protocol version suffers
-   from several deficiencies, as described in Section 6.  Note that
-   addressing them usually requires bespoke configuration.
+   from several deficiencies, as described in Section 6.  Addressing
+   them usually requires bespoke configuration.
 
    TLS 1.3 [TLS13] is also in widespread use and fixes most known
    deficiencies with TLS 1.2.  Examples of this include encrypting more
@@ -118,20 +120,22 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-3.  Implications for post-quantum cryptography
+3.  Implications for Post-Quantum Cryptography (PQC)
 
    Cryptographically-relevant quantum computers (CRQC), once available,
-   will have a huge impact on TLS traffic.  To mitigate this, TLS
-   applications will need to migrate to post-quantum cryptography (PQC)
-   [PQC].  Detailed consideration of when any application requires PQC,
-   or when a CRQC is a threat they need to protect against, is beyond
-   the scope of this document.
+   will have a huge impact on TLS traffic (see, e.g., Section 2 of
+   [I-D.ietf-pquip-pqc-engineers]).  To mitigate this, TLS applications
+   will need to migrate to Post-Quantum Cryptography (PQC) [PQC].
+   Detailed considerations of when an application requires PQC or when a
+   CRQC is a threat that an application need to protect against, are
+   beyond the scope of this document.
 
    For TLS it is important to note that the focus of these efforts
    within the TLS WG is TLS 1.3 or later, and that TLS 1.2 will not be
    supported (see [TLS12FROZEN]).  This is one more reason for new
-   protocols to default to TLS 1.3, where PQC is actively being
-   standardized, as this gives new applications the option to use PQC.
+   protocols requiring TLS service to default to TLS 1.3, where PQC is
+   actively being standardized, as this gives new applications the
+   option to use PQC.
 
 4.  TLS Use by Other Protocols and Applications
 
@@ -162,7 +166,7 @@ Table of Contents
 
 5.  Changes to RFC 9325
 
-   RFC 9325 provides recommendations for ensuring the security of
+   [RFC9325] provides recommendations for ensuring the security of
    deployed services that use TLS and, unlike this document, DTLS as
    well.  At the time it was published, it described availability of TLS
    1.3 as "widely available."  The transition and adoption mentioned in
@@ -170,10 +174,11 @@ Table of Contents
    changes to the recommendations in [RFC9325], Section 3.1.1:
 
    *  That section says that TLS 1.3 SHOULD be supported; this document
-      says that for new protocols it MUST be supported.
+      mandates that TLS 1.3 MUST be supported for new TLS-based
+      protocols.
 
    *  That section says that TLS 1.2 MUST be supported; this document
-      says that it MAY be supported as described above.
+      says that TLS 1.2 MAY be supported.
 
    Again, these changes only apply to TLS, and not DTLS.
 
@@ -205,7 +210,7 @@ Table of Contents
    protocol, namely RSA key exchange and finite field Diffie-Hellman,
    suffer from several weaknesses.  Similarly, to securely deploy the
    protocol, these key exchange methods must be disabled.  See
-   [I-D.draft-ietf-tls-deprecate-obsolete-kex] for details.
+   [I-D.ietf-tls-deprecate-obsolete-kex] for details.
 
    Thirdly, symmetric ciphers which were widely-used in the protocol,
    namely RC4 and CBC cipher suites, suffer from several weaknesses.
@@ -216,7 +221,7 @@ Table of Contents
    first attempt to implement the cipher suites in constant time
    introduced an even more severe vulnerability [LUCKY13FIX].  There
    have been further similar vulnerabilities throughout the years
-   exploiting CBC cipher suites; refer to e.g. [CBCSCANNING] for an
+   exploiting CBC cipher suites; refer to, e.g., [CBCSCANNING] for an
    example and a survey of similar works.
 
    In addition, TLS 1.2 was affected by several other attacks that TLS
@@ -294,7 +299,15 @@ Table of Contents
               <https://inria.hal.science/hal-01114250/file/messy-state-
               of-the-union-oakland15.pdf>.
 
-   [I-D.draft-ietf-tls-deprecate-obsolete-kex]
+   [I-D.ietf-pquip-pqc-engineers]
+              Banerjee, A., Reddy.K, T., Schoinianakis, D., Hollebeek,
+              T., and M. Ounsworth, "Post-Quantum Cryptography for
+              Engineers", Work in Progress, Internet-Draft, draft-ietf-
+              pquip-pqc-engineers-09, 13 February 2025,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-pquip-
+              pqc-engineers-09>.
+
+   [I-D.ietf-tls-deprecate-obsolete-kex]
               Bartle, C. and N. Aviram, "Deprecating Obsolete Key
               Exchange Methods in TLS 1.2", Work in Progress, Internet-
               Draft, draft-ietf-tls-deprecate-obsolete-kex-05, 3

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
-<title>New Protocols Must Require TLS 1.3</title>
+<title>New Protocols with TLS Support Must Require TLS 1.3</title>
 <meta content="Rich Salz" name="author">
 <meta content="Nimrod Aviram" name="author">
 <meta content="
@@ -14,9 +14,9 @@ with TLS 1.2.
 Examples of this include
 removing error-prone cryptographic primitives and encrypting
 more of the traffic so that it is not readable by outsiders.
-For these reasons, new protocols that use TLS must require and
-assume the existence of TLS 1.3.
-As DTLS 1.3 is not widely available or deployed,
+For these reasons, new protocols with TLS support must require and
+assume the existence of TLS 1.3. 
+       As DTLS 1.3 is not widely available or deployed,
 this prescription does not pertain to DTLS (in any DTLS version); it pertains to
 TLS only. 
        This document updates RFC9325 and discusses post-quantum cryptography
@@ -24,6 +24,9 @@ and fixed weaknesses in TLS 1.2 as a rationale for that update.
     " name="description">
 <meta content="xml2rfc 3.28.0" name="generator">
 <meta content="TLS" name="keyword">
+<meta content="TLS Transition" name="keyword">
+<meta content="TLS Support" name="keyword">
+<meta content="Interoperability" name="keyword">
 <meta content="features" name="keyword">
 <meta content="draft-ietf-uta-require-tls13-latest" name="ietf.draft">
 <!-- Generator version information:
@@ -1058,11 +1061,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">require-tls1.3</td>
-<td class="right">March 2025</td>
+<td class="right">April 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Salz &amp; Aviram</td>
-<td class="center">Expires 28 September 2025</td>
+<td class="center">Expires 3 October 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1078,12 +1081,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="https://www.rfc-editor.org/rfc/rfc9325" class="eref">9325</a> (if approved)</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-03-27" class="published">27 March 2025</time>
+<time datetime="2025-04-01" class="published">1 April 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Best Current Practice</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-09-28">28 September 2025</time></dd>
+<dd class="expires"><time datetime="2025-10-03">3 October 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1096,7 +1099,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </dd>
 </dl>
 </div>
-<h1 id="title">New Protocols Must Require TLS 1.3</h1>
+<h1 id="title">New Protocols with TLS Support Must Require TLS 1.3</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
 <p id="section-abstract-1">TLS 1.2 is in use and can be configured such that it provides good security
@@ -1105,13 +1108,13 @@ with TLS 1.2.
 Examples of this include
 removing error-prone cryptographic primitives and encrypting
 more of the traffic so that it is not readable by outsiders.
-For these reasons, new protocols that use TLS must require and
-assume the existence of TLS 1.3.
-As DTLS 1.3 is not widely available or deployed,
+For these reasons, new protocols with TLS support must require and
+assume the existence of TLS 1.3.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-2">As DTLS 1.3 is not widely available or deployed,
 this prescription does not pertain to DTLS (in any DTLS version); it pertains to
-TLS only.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
-<p id="section-abstract-2">This document updates RFC9325 and discusses post-quantum cryptography
-and fixed weaknesses in TLS 1.2 as a rationale for that update.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
+TLS only.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
+<p id="section-abstract-3">This document updates RFC9325 and discusses post-quantum cryptography
+and fixed weaknesses in TLS 1.2 as a rationale for that update.<a href="#section-abstract-3" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">
@@ -1147,7 +1150,7 @@ and fixed weaknesses in TLS 1.2 as a rationale for that update.<a href="#section
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 28 September 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 3 October 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1183,7 +1186,7 @@ and fixed weaknesses in TLS 1.2 as a rationale for that update.<a href="#section
             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-conventions-and-definitions" class="internal xref">Conventions and Definitions</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
-            <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-implications-for-post-quant" class="internal xref">Implications for post-quantum cryptography</a></p>
+            <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-implications-for-post-quant" class="internal xref">Implications for Post-Quantum Cryptography (PQC)</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-tls-use-by-other-protocols-" class="internal xref">TLS Use by Other Protocols and Applications</a></p>
@@ -1224,7 +1227,7 @@ and fixed weaknesses in TLS 1.2 as a rationale for that update.<a href="#section
 it provides good security properties.
 However, this protocol version suffers from several
 deficiencies, as described in <a href="#sec-considerations" class="auto internal xref">Section 6</a>.
-Note that addressing them usually requires bespoke configuration.<a href="#section-1-1" class="pilcrow">¶</a></p>
+Addressing them usually requires bespoke configuration.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">TLS 1.3 <span>[<a href="#TLS13" class="cite xref">TLS13</a>]</span> is also in
 widespread use and fixes most known deficiencies with TLS 1.2.
 Examples of this include
@@ -1253,21 +1256,21 @@ described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</s
 appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="implications-for-post-quantum-cryptography">
+<div id="implications-for-post-quantum-cryptography-pqc">
 <section id="section-3">
       <h2 id="name-implications-for-post-quant">
-<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-implications-for-post-quant" class="section-name selfRef">Implications for post-quantum cryptography</a>
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-implications-for-post-quant" class="section-name selfRef">Implications for Post-Quantum Cryptography (PQC)</a>
       </h2>
 <p id="section-3-1">Cryptographically-relevant quantum computers (CRQC), once available, will
-have a huge impact on TLS traffic. To mitigate this, TLS applications
-will need to migrate to post-quantum cryptography (PQC) <span>[<a href="#PQC" class="cite xref">PQC</a>]</span>.
-Detailed consideration of when any application requires PQC, or when
-a CRQC is a threat they need to protect against, is beyond the
+have a huge impact on TLS traffic (see, e.g., <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-pquip-pqc-engineers-09#section-2" class="relref">Section 2</a> of [<a href="#I-D.ietf-pquip-pqc-engineers" class="cite xref">I-D.ietf-pquip-pqc-engineers</a>]</span>). To mitigate this, TLS applications
+will need to migrate to Post-Quantum Cryptography (PQC) <span>[<a href="#PQC" class="cite xref">PQC</a>]</span>.
+Detailed considerations of when an application requires PQC or when
+a CRQC is a threat that an application need to protect against, are beyond the
 scope of this document.<a href="#section-3-1" class="pilcrow">¶</a></p>
 <p id="section-3-2">For TLS it is important to note that the focus of these efforts within
 the TLS WG is TLS 1.3
 or later, and that TLS 1.2 will not be supported (see <span>[<a href="#TLS12FROZEN" class="cite xref">TLS12FROZEN</a>]</span>).
-This is one more reason for new protocols to default to TLS 1.3, where
+This is one more reason for new protocols requiring TLS service to default to TLS 1.3, where
 PQC is actively being standardized, as this gives new applications
 the option to use PQC.<a href="#section-3-2" class="pilcrow">¶</a></p>
 </section>
@@ -1305,7 +1308,7 @@ in the above paragraphs.<a href="#section-4-4" class="pilcrow">¶</a></p>
       <h2 id="name-changes-to-rfc-9325">
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-changes-to-rfc-9325" class="section-name selfRef">Changes to RFC 9325</a>
       </h2>
-<p id="section-5-1">RFC 9325 provides recommendations for ensuring the security of deployed
+<p id="section-5-1"><span>[<a href="#RFC9325" class="cite xref">RFC9325</a>]</span> provides recommendations for ensuring the security of deployed
 services that use TLS and, unlike this document, DTLS as well.
 At the time it was published, it described availability of TLS 1.3
 as "widely available." The transition and adoption mentioned in that
@@ -1313,12 +1316,12 @@ document has grown, and this document now makes two small changes
 to the recommendations in <span>[<a href="#RFC9325" class="cite xref">RFC9325</a>], <a href="https://rfc-editor.org/rfc/rfc9325#section-3.1.1" class="relref">Section 3.1.1</a></span>:<a href="#section-5-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-5-2.1">
-          <p id="section-5-2.1.1">That section says that TLS 1.3 <span class="bcp14">SHOULD</span> be supported; this document says
-that for new protocols it <span class="bcp14">MUST</span> be supported.<a href="#section-5-2.1.1" class="pilcrow">¶</a></p>
+          <p id="section-5-2.1.1">That section says that TLS 1.3 <span class="bcp14">SHOULD</span> be supported; this document mandates
+that TLS 1.3 <span class="bcp14">MUST</span> be supported for new TLS-based protocols.<a href="#section-5-2.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-5-2.2">
           <p id="section-5-2.2.1">That section says that TLS 1.2 <span class="bcp14">MUST</span> be supported; this document says that
-it <span class="bcp14">MAY</span> be supported as described above.<a href="#section-5-2.2.1" class="pilcrow">¶</a></p>
+TLS 1.2 <span class="bcp14">MAY</span> be supported.<a href="#section-5-2.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="section-5-3">Again, these changes only apply to TLS, and not DTLS.<a href="#section-5-3" class="pilcrow">¶</a></p>
@@ -1352,7 +1355,7 @@ not allow servers to renegotiate the certificate during a connection.<a href="#s
 RSA key exchange and finite field Diffie-Hellman, suffer from several
 weaknesses. Similarly, to securely deploy the protocol, these key exchange
 methods must be disabled.
-See <span>[<a href="#I-D.draft-ietf-tls-deprecate-obsolete-kex" class="cite xref">I-D.draft-ietf-tls-deprecate-obsolete-kex</a>]</span> for details.<a href="#section-6-3" class="pilcrow">¶</a></p>
+See <span>[<a href="#I-D.ietf-tls-deprecate-obsolete-kex" class="cite xref">I-D.ietf-tls-deprecate-obsolete-kex</a>]</span> for details.<a href="#section-6-3" class="pilcrow">¶</a></p>
 <p id="section-6-4">Thirdly, symmetric ciphers which were widely-used in the protocol, namely RC4
 and CBC cipher suites, suffer from several weaknesses. RC4 suffers from
 exploitable biases in its key stream; see <span>[<a href="#RFC7465" class="cite xref">RFC7465</a>]</span>. CBC cipher suites have
@@ -1361,7 +1364,7 @@ implementation of these cipher suites inherently suffers from the Lucky13 timing
 attack <span>[<a href="#LUCKY13" class="cite xref">LUCKY13</a>]</span>. The first attempt to implement the cipher suites in
 constant time introduced an even more severe vulnerability <span>[<a href="#LUCKY13FIX" class="cite xref">LUCKY13FIX</a>]</span>.
 There have been further similar vulnerabilities throughout the
-years exploiting CBC cipher suites; refer to e.g. <span>[<a href="#CBCSCANNING" class="cite xref">CBCSCANNING</a>]</span>
+years exploiting CBC cipher suites; refer to, e.g., <span>[<a href="#CBCSCANNING" class="cite xref">CBCSCANNING</a>]</span>
 for an example and a survey of similar works.<a href="#section-6-4" class="pilcrow">¶</a></p>
 <p id="section-6-5">In addition, TLS 1.2 was affected by several other attacks that
 TLS 1.3 is immune to:
@@ -1440,7 +1443,11 @@ This is a protocol issue that cannot be addressed by configuration.<a href="#sec
         <dd>
 <span class="refAuthor">Beurdouche, B.</span>, <span class="refAuthor">Bhargavan, K.</span>, <span class="refAuthor">Delignat-Lavaud, A.</span>, <span class="refAuthor">Fournet, C.</span>, <span class="refAuthor">Kohlweiss, M.</span>, <span class="refAuthor">Pironti, A.</span>, <span class="refAuthor">Strub, P.-Y.</span>, and <span class="refAuthor">J. K. Zinzindohoue</span>, <span class="refTitle">"A messy state of the union: Taming the composite state machines of TLS"</span>, <span>n.d.</span>, <span>&lt;<a href="https://inria.hal.science/hal-01114250/file/messy-state-of-the-union-oakland15.pdf">https://inria.hal.science/hal-01114250/file/messy-state-of-the-union-oakland15.pdf</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="I-D.draft-ietf-tls-deprecate-obsolete-kex">[I-D.draft-ietf-tls-deprecate-obsolete-kex]</dt>
+<dt id="I-D.ietf-pquip-pqc-engineers">[I-D.ietf-pquip-pqc-engineers]</dt>
+        <dd>
+<span class="refAuthor">Banerjee, A.</span>, <span class="refAuthor">Reddy.K, T.</span>, <span class="refAuthor">Schoinianakis, D.</span>, <span class="refAuthor">Hollebeek, T.</span>, and <span class="refAuthor">M. Ounsworth</span>, <span class="refTitle">"Post-Quantum Cryptography for Engineers"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-pquip-pqc-engineers-09</span>, <time datetime="2025-02-13" class="refDate">13 February 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-pquip-pqc-engineers-09">https://datatracker.ietf.org/doc/html/draft-ietf-pquip-pqc-engineers-09</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-tls-deprecate-obsolete-kex">[I-D.ietf-tls-deprecate-obsolete-kex]</dt>
         <dd>
 <span class="refAuthor">Bartle, C.</span> and <span class="refAuthor">N. Aviram</span>, <span class="refTitle">"Deprecating Obsolete Key Exchange Methods in TLS 1.2"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-deprecate-obsolete-kex-05</span>, <time datetime="2024-09-03" class="refDate">3 September 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-deprecate-obsolete-kex-05">https://datatracker.ietf.org/doc/html/draft-ietf-tls-deprecate-obsolete-kex-05</a>&gt;</span>. </dd>
 <dd class="break"></dd>
