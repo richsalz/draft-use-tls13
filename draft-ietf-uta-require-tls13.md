@@ -122,8 +122,6 @@ informative:
 TLS 1.2 is in use and can be configured such that it provides good security
 properties. TLS 1.3 use is increasing, and fixes some known deficiencies
 with TLS 1.2.
-Examples of this include
-removing error-prone cryptographic primitives and encrypting
 more of the traffic so that it is not readable by outsiders.
 For these reasons, new protocols that use TLS must require and
 assume the existence of TLS 1.3.
