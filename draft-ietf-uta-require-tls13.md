@@ -1,5 +1,5 @@
 ---
-title: "New Protocols Must Require TLS 1.3"
+title: "New Protocols Using TLS Must Require TLS 1.3"
 abbrev: "require-tls1.3"
 category: bcp
 updates: 9325
@@ -122,43 +122,36 @@ informative:
 
 --- abstract
 
-TLS 1.2 is in use and can be configured such that it provides good security
-properties. TLS 1.3 use is increasing, and fixes some known deficiencies
-with TLS 1.2.
-more of the traffic so that it is not readable by outsiders.
-For these reasons, new protocols that use TLS must require and
-assume the existence of TLS 1.3.
-As DTLS 1.3 is not widely available or deployed,
-this prescription does not pertain to DTLS (in any DTLS version); it pertains to
-TLS only.
+TLS 1.3 use is widespread, it has had comprehensive security proofs, and it
+improves both security and privacy over TLS 1.2.  Therefore, new protocols
+that use TLS must require TLS 1.3.  As DTLS 1.3 is not widely available or
+deployed, this prescription does not pertain to DTLS (in any DTLS version);
+it pertains to TLS only.
 
-This document updates RFC9325 and discusses post-quantum cryptography
-and fixed weaknesses in TLS 1.2 as a rationale for that update.
+This document updates RFC9325 and discusses post-quantum cryptography and the
+security and privacy improvements over TLS 1.2 as a rationale for that update.
 
 --- middle
 
 # Introduction {#sec-reasons}
 
-TLS 1.2 {{TLS12}} is in use and can be configured such that
-it provides good security properties.
-However, this protocol version suffers from several
-deficiencies, as described in {{sec-considerations}}.
-Addressing them usually requires bespoke configuration.
-
-TLS 1.3 {{TLS13}} is also in
-widespread use and fixes most known deficiencies with TLS 1.2.
-Examples of this include
-encrypting more of the traffic so that it is not readable by outsiders and
-removing most cryptographic primitives considered dangerous. Importantly, the
-protocol has had comprehensive security proofs and should provide excellent security without
-any additional configuration.
-
 This document specifies that, since TLS 1.3 use is widespread, new protocols
-that use TLS must require and assume its existence.
-It updates {{RFC9325}} as described in {{rfc9325-updates}}.
-As DTLS 1.3 is not widely available or deployed,
-this prescription does not pertain to DTLS (in any DTLS version); it pertains to
-TLS only.
+that use TLS must require and assume its existence.  It updates {{RFC9325}}
+as described in {{rfc9325-updates}}.  As DTLS 1.3 is not widely available or
+deployed, this prescription does not pertain to DTLS (in any DTLS version);
+it pertains to TLS only.
+
+TLS 1.3 {{TLS13}} is in widespread use and fixes most known deficiencies with
+TLS 1.2.  Examples of this include encrypting more of the traffic so that it
+is not readable by outsiders and removing most cryptographic primitives
+now considered weak. Importantly, the protocol has had comprehensive
+security proofs and should provide excellent security without any additional
+configuration.
+
+TLS 1.2 {{TLS12}} is in use and can be configured such that it provides good
+security properties.  However, TLS 1.2 suffers from several deficiencies, as
+described in {{sec-considerations}}.  Addressing them usually requires
+bespoke configuration.
 
 This document updates RFC9325 and discusses post-quantum cryptography
 and fixed weaknesses in TLS 1.2 as a rationale for that update.
@@ -240,7 +233,7 @@ merely much more difficult to configure it securely as opposed to using its
 modern successor, TLS 1.3. See {{!RFC9325}} for a more thorough guide on the
 secure deployment of TLS 1.2.
 
-Firstly, the TLS 1.2 protocol, without any extension points, is vulnerable to
+Firstly, the TLS 1.2 protocol, without any extensions, is vulnerable to
 renegotiation attacks (see {{RENEG1}} and {{RENEG2}})  and the
 Triple Handshake attack (see {{TRIPLESHAKE}}).
 Broadly, these attacks
