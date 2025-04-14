@@ -14,6 +14,9 @@ area: "Security"
 workgroup: "Using TLS in Applications"
 keyword:
  - TLS
+ - TLS Transition
+ - TLS Support
+ - Interoperability
  - features
 venue:
   group: "Using TLS in Applications"
@@ -140,7 +143,7 @@ TLS 1.2 {{TLS12}} is in use and can be configured such that
 it provides good security properties.
 However, this protocol version suffers from several
 deficiencies, as described in {{sec-considerations}}.
-Note that addressing them usually requires bespoke configuration.
+Addressing them usually requires bespoke configuration.
 
 TLS 1.3 {{TLS13}} is also in
 widespread use and fixes most known deficiencies with TLS 1.2.
@@ -164,19 +167,21 @@ and fixed weaknesses in TLS 1.2 as a rationale for that update.
 
 {::boilerplate bcp14-tagged}
 
-# Implications for post-quantum cryptography
+# Implications for post-quantum cryptography (PQC)
 
 Cryptographically-relevant quantum computers (CRQC), once available, will
-have a huge impact on TLS traffic. To mitigate this, TLS applications
-will need to migrate to post-quantum cryptography (PQC) [PQC].
-Detailed consideration of when any application requires PQC, or when
-a CRQC is a threat they need to protect against, is beyond the
-scope of this document.
+have a huge impact on TLS traffic (see, e.g., {{Section 2 of
+?I-D.ietf-pquip-pqc-engineers}}).  To mitigate this, TLS applications will
+need to migrate to Post-Quantum Cryptography (PQC) [PQC].  Detailed
+considerations of when an application requires PQC or when a CRQC is a threat
+that an application need to protect against, are beyond the scope of this
+document.
 
 For TLS it is important to note that the focus of these efforts within
 the TLS WG is TLS 1.3
 or later, and that TLS 1.2 will not be supported (see {{TLS12FROZEN}}).
-This is one more reason for new protocols to default to TLS 1.3, where
+This is one more reason for new protocols require TLS to default to TLS 1.3,
+where
 PQC is actively being standardized, as this gives new applications
 the option to use PQC.
 
@@ -210,18 +215,18 @@ in the above paragraphs.
 
 # Changes to RFC 9325 {#rfc9325-updates}
 
-RFC 9325 provides recommendations for ensuring the security of deployed
+{{RFC9325}} provides recommendations for ensuring the security of deployed
 services that use TLS and, unlike this document, DTLS as well.
 At the time it was published, it described availability of TLS 1.3
 as "widely available." The transition and adoption mentioned in that
 document has grown, and this document now makes two changes
 to the recommendations in {{RFC9325, Section 3.1.1}}:
 
-- That section says that TLS 1.3 SHOULD be supported; this document says
-that for new protocols it MUST be supported.
+- That section says that TLS 1.3 SHOULD be supported; this document mandates
+that TLS 1.3 MUST be supported for new TLS-using protocols.
 
 - That section says that TLS 1.2 MUST be supported; this document says that
-it MAY be supported as described above.
+TLS 1.2 MAY be supported as described above.
 
 Again, these changes only apply to TLS, and not DTLS.
 
@@ -252,7 +257,7 @@ Secondly, the original key exchange methods specified for the protocol, namely
 RSA key exchange and finite field Diffie-Hellman, suffer from several
 weaknesses. Similarly, to securely deploy the protocol, these key exchange
 methods must be disabled.
-See {{?I-D.draft-ietf-tls-deprecate-obsolete-kex}} for details.
+See {{?I-D.ietf-tls-deprecate-obsolete-kex}} for details.
 
 Thirdly, symmetric ciphers which were widely-used in the protocol, namely RC4
 and CBC cipher suites, suffer from several weaknesses. RC4 suffers from
@@ -262,7 +267,7 @@ implementation of these cipher suites inherently suffers from the Lucky13 timing
 attack {{LUCKY13}}. The first attempt to implement the cipher suites in
 constant time introduced an even more severe vulnerability {{LUCKY13FIX}}.
 There have been further similar vulnerabilities throughout the
-years exploiting CBC cipher suites; refer to e.g. {{CBCSCANNING}}
+years exploiting CBC cipher suites; refer to, e.g., {{CBCSCANNING}}
 for an example and a survey of similar works.
 
 In addition, TLS 1.2 was affected by several other attacks that
