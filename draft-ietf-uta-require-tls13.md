@@ -248,7 +248,8 @@ not allow servers to renegotiate the certificate during a connection.
 
 Secondly, the original key exchange methods specified for the protocol, namely
 RSA key exchange and finite field Diffie-Hellman, suffer from several
-weaknesses. Similarly, to securely deploy the protocol, these key exchange
+weaknesses. Similarly, to securely deploy the protocol,
+most of these key exchange
 methods must be disabled.
 See {{?I-D.ietf-tls-deprecate-obsolete-kex}} for details.
 
