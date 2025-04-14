@@ -4,21 +4,17 @@
 <meta charset="utf-8">
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
-<title>New Protocols Must Require TLS 1.3</title>
+<title>New Protocols Using TLS Must Require TLS 1.3</title>
 <meta content="Rich Salz" name="author">
 <meta content="Nimrod Aviram" name="author">
 <meta content="
-       TLS 1.2 is in use and can be configured such that it provides good security
-properties. TLS 1.3 use is increasing, and fixes some known deficiencies
-with TLS 1.2.
-more of the traffic so that it is not readable by outsiders.
-For these reasons, new protocols that use TLS must require and
-assume the existence of TLS 1.3.
-As DTLS 1.3 is not widely available or deployed,
-this prescription does not pertain to DTLS (in any DTLS version); it pertains to
-TLS only. 
-       This document updates RFC9325 and discusses post-quantum cryptography
-and fixed weaknesses in TLS 1.2 as a rationale for that update. 
+       TLS 1.3 use is widespread, it has had comprehensive security proofs, and it
+improves both security and privacy over TLS 1.2.  Therefore, new protocols
+that use TLS must require TLS 1.3.  As DTLS 1.3 is not widely available or
+deployed, this prescription does not pertain to DTLS (in any DTLS version);
+it pertains to TLS only. 
+       This document updates RFC9325 and discusses post-quantum cryptography and the
+security and privacy improvements over TLS 1.2 as a rationale for that update. 
     " name="description">
 <meta content="xml2rfc 3.28.1" name="generator">
 <meta content="TLS" name="keyword">
@@ -1097,20 +1093,16 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </dd>
 </dl>
 </div>
-<h1 id="title">New Protocols Must Require TLS 1.3</h1>
+<h1 id="title">New Protocols Using TLS Must Require TLS 1.3</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">TLS 1.2 is in use and can be configured such that it provides good security
-properties. TLS 1.3 use is increasing, and fixes some known deficiencies
-with TLS 1.2.
-more of the traffic so that it is not readable by outsiders.
-For these reasons, new protocols that use TLS must require and
-assume the existence of TLS 1.3.
-As DTLS 1.3 is not widely available or deployed,
-this prescription does not pertain to DTLS (in any DTLS version); it pertains to
-TLS only.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
-<p id="section-abstract-2">This document updates RFC9325 and discusses post-quantum cryptography
-and fixed weaknesses in TLS 1.2 as a rationale for that update.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">TLS 1.3 use is widespread, it has had comprehensive security proofs, and it
+improves both security and privacy over TLS 1.2.  Therefore, new protocols
+that use TLS must require TLS 1.3.  As DTLS 1.3 is not widely available or
+deployed, this prescription does not pertain to DTLS (in any DTLS version);
+it pertains to TLS only.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-2">This document updates RFC9325 and discusses post-quantum cryptography and the
+security and privacy improvements over TLS 1.2 as a rationale for that update.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">
@@ -1219,24 +1211,21 @@ and fixed weaknesses in TLS 1.2 as a rationale for that update.<a href="#section
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">TLS 1.2 <span>[<a href="#TLS12" class="cite xref">TLS12</a>]</span> is in use and can be configured such that
-it provides good security properties.
-However, this protocol version suffers from several
-deficiencies, as described in <a href="#sec-considerations" class="auto internal xref">Section 6</a>.
-Addressing them usually requires bespoke configuration.<a href="#section-1-1" class="pilcrow">¶</a></p>
-<p id="section-1-2">TLS 1.3 <span>[<a href="#TLS13" class="cite xref">TLS13</a>]</span> is also in
-widespread use and fixes most known deficiencies with TLS 1.2.
-Examples of this include
-encrypting more of the traffic so that it is not readable by outsiders and
-removing most cryptographic primitives considered dangerous. Importantly, the
-protocol has had comprehensive security proofs and should provide excellent security without
-any additional configuration.<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">This document specifies that, since TLS 1.3 use is widespread, new protocols
-that use TLS must require and assume its existence.
-It updates <span>[<a href="#RFC9325" class="cite xref">RFC9325</a>]</span> as described in <a href="#rfc9325-updates" class="auto internal xref">Section 5</a>.
-As DTLS 1.3 is not widely available or deployed,
-this prescription does not pertain to DTLS (in any DTLS version); it pertains to
-TLS only.<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-1">This document specifies that, since TLS 1.3 use is widespread, new protocols
+that use TLS must require and assume its existence.  It updates <span>[<a href="#RFC9325" class="cite xref">RFC9325</a>]</span>
+as described in <a href="#rfc9325-updates" class="auto internal xref">Section 5</a>.  As DTLS 1.3 is not widely available or
+deployed, this prescription does not pertain to DTLS (in any DTLS version);
+it pertains to TLS only.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">TLS 1.3 <span>[<a href="#TLS13" class="cite xref">TLS13</a>]</span> is in widespread use and fixes most known deficiencies with
+TLS 1.2.  Examples of this include encrypting more of the traffic so that it
+is not readable by outsiders and removing most cryptographic primitives
+now considered weak. Importantly, the protocol has had comprehensive
+security proofs and should provide excellent security without any additional
+configuration.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-3">TLS 1.2 <span>[<a href="#TLS12" class="cite xref">TLS12</a>]</span> is in use and can be configured such that it provides good
+security properties.  However, TLS 1.2 suffers from several deficiencies, as
+described in <a href="#sec-considerations" class="auto internal xref">Section 6</a>.  Addressing them usually requires
+bespoke configuration.<a href="#section-1-3" class="pilcrow">¶</a></p>
 <p id="section-1-4">This document updates RFC9325 and discusses post-quantum cryptography
 and fixed weaknesses in TLS 1.2 as a rationale for that update.<a href="#section-1-4" class="pilcrow">¶</a></p>
 </section>
@@ -1336,7 +1325,7 @@ It should be noted, however, that TLS 1.2 can be configured securely; it is
 merely much more difficult to configure it securely as opposed to using its
 modern successor, TLS 1.3. See <span>[<a href="#RFC9325" class="cite xref">RFC9325</a>]</span> for a more thorough guide on the
 secure deployment of TLS 1.2.<a href="#section-6-1" class="pilcrow">¶</a></p>
-<p id="section-6-2">Firstly, the TLS 1.2 protocol, without any extension points, is vulnerable to
+<p id="section-6-2">Firstly, the TLS 1.2 protocol, without any extensions, is vulnerable to
 renegotiation attacks (see <span>[<a href="#RENEG1" class="cite xref">RENEG1</a>]</span> and <span>[<a href="#RENEG2" class="cite xref">RENEG2</a>]</span>)  and the
 Triple Handshake attack (see <span>[<a href="#TRIPLESHAKE" class="cite xref">TRIPLESHAKE</a>]</span>).
 Broadly, these attacks
